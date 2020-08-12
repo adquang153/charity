@@ -28,9 +28,9 @@
     <div id="app">
 
         @include('view.layouts.header')
-        <main class="main">
+
         @yield('content')
-        </main>
+        
         @include('view.layouts.footer')
         
     </div>

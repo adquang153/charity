@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-
+<main class="main">
 <section id="top-hero">
     <div class="container">
       <div class="row">
@@ -751,8 +751,8 @@
       </div>
     </div>
   </section>
-
-@endsection
+</main>
+  @endsection
     
 @section('scripts')
 

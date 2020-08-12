@@ -12,4 +12,12 @@ class HomeController extends Controller
     public function index(){
         return view('view.home');
     }
+
+    public function about(){
+        return view('view.about');
+    }
+
+    public function detail(){
+        return view('view.detail');
+    }
 }
