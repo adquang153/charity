@@ -21,3 +21,13 @@ main.main.detail .container .hr-top {
     height: 100vh;
     overflow: auto;
 }
+.progress {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 6px;
+    overflow: hidden;
+    font-size: 0.65625rem;
+    background-color: #e9ecef;
+    border-radius: 0.25rem;
+}
