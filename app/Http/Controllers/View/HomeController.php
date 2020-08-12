@@ -10,6 +10,6 @@ class HomeController extends Controller
 {
     //
     public function index(){
-        echo Handler::test();
+        return view('view.home');
     }
 }
