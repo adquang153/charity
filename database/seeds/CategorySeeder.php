@@ -13,12 +13,14 @@ class CategorySeeder extends Seeder
     public function run()
     {
         DB::table('category')->insert([
-            ['name' => 'Từ thiện', 'created_at' => Now(), 'updated_at' => Now()],
-            ['name' => 'Trẻ em', 'created_at' => Now(), 'updated_at' => Now()],
-            ['name' => 'Khó khăn', 'created_at' => Now(), 'updated_at' => Now()],
-            ['name' => 'Khuyết tật', 'created_at' => Now(), 'updated_at' => Now()],
-            ['name' => 'Giáo dục', 'created_at' => Now(), 'updated_at' => Now()],
-            ['name' => 'Khác', 'created_at' => Now(), 'updated_at' => Now()],
+            ['name' => 'Campaign', 'created_at' => Now(), 'updated_at' => Now()],
+            ['name' => 'Từ thiện', 'parent_id' => 1 , 'created_at' => Now(), 'updated_at' => Now()],
+            ['name' => 'Trẻ em', 'parent_id' => 1, 'created_at' => Now(), 'updated_at' => Now()],
+            ['name' => 'Khó khăn', 'parent_id' => 1, 'created_at' => Now(), 'updated_at' => Now()],
+            ['name' => 'Khuyết tật', 'parent_id' => 1, 'created_at' => Now(), 'updated_at' => Now()],
+            ['name' => 'Giáo dục', 'parent_id' => 1, 'created_at' => Now(), 'updated_at' => Now()],
+            ['name' => 'Khác', 'parent_id' => 1, 'created_at' => Now(), 'updated_at' => Now()],
+            ['name' => 'Post', 'created_at' => Now(), 'updated_at' => Now()],
         ]);
     }
 }
