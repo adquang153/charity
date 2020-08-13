@@ -24,6 +24,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Controller Admin
 Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function(){
     Route::get('/', 'HomeController@index')->name('index');
+    Route::resource('/user', 'UserController');
+    Route::resource('/post', 'PostController');
+    Route::resource('/campaign', 'CampaignController');
+    Route::resource('/difficult-situation', 'DifficultSituationController');
 });
 
 // Controller View
