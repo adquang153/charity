@@ -24,7 +24,7 @@ class AddReferencesAllTable extends Migration
         });
         Schema::table('comment', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('campaign_id')->references('id')->on('campaign')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('post_id')->references('id')->on('post')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -35,7 +35,7 @@ class AddReferencesAllTable extends Migration
      */
     public function down()
     {
-        Schema::table('user', function (Blueprint $table) {
+        Schema::table('post', function (Blueprint $table) {
             //
         });
     }
