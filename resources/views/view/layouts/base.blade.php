@@ -18,7 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="{{asset('css/home.css')}}">
     <link rel="stylesheet" href="{{asset('css/index.css')}}">
     <link rel="stylesheet" href="{{asset('css/progresscircle.css')}}">
@@ -30,15 +30,15 @@
         @include('view.layouts.header')
 
         @yield('content')
-        
+
         @include('view.layouts.footer')
-        
+
     </div>
 
     <script src="{{asset('js/jquery.min.js')}}"></script>
     <script src="{{asset('js/all.js')}}"></script>
     <script src="{{asset('js/popper.min.js')}}"></script>
-    <script src="{{asset('js/jquery.slim.min.js')}}"></script>
+    {{-- <script src="{{asset('js/jquery.slim.min.js')}}"></script> --}}
     <script src="{{asset('js/progresscircle.js')}}"></script>
     <script type="text/javascript">
         $(function () {
