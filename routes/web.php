@@ -41,4 +41,5 @@ Route::namespace('View')->name('view.')->group(function(){
     Route::get('/detail-articles', 'HomeController@detailArticles')->name('detail-articles');
     Route::get('/register', 'HomeController@register')->name('register');
     Route::get('/loginfe', 'HomeController@login')->name('loginfe');
+    Route::get('/createCampaign', 'HomeController@createCampaign')->name('createCampaign');
 });
