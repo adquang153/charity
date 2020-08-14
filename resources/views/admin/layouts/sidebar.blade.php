@@ -9,43 +9,43 @@
     </a></div>
     <div class="sidebar-wrapper">
         <ul class="nav">
-            <li class="nav-item active  ">
+            <li class="nav-item " data-active="dashboard">
                 <a class="nav-link" href="{{route('admin.index')}}">
                     <i class="material-icons">dashboard</i>
                     <p>Dashboard</p>
                 </a>
             </li>
-            <li class="nav-item ">
+            <li class="nav-item " data-active="user">
                 <a class="nav-link" href="{{route('admin.user.index')}}">
                     <i class="material-icons">person</i>
                     <p>User Profile</p>
                 </a>
             </li>
-            <li class="nav-item ">
+            <li class="nav-item " data-active="campaign">
                 <a class="nav-link" href="{{route('admin.campaign.index')}}">
                 <i class="material-icons">payments</i>
                     <p>Campaign</p>
                 </a>
             </li>
-            <li class="nav-item ">
+            <li class="nav-item " data-active="post">
                 <a class="nav-link" href="{{route('admin.post.index')}}">
                 <i class="material-icons">pageview</i>
                     <p>Post</p>
                 </a>
             </li>
-            <li class="nav-item ">
+            <li class="nav-item " data-active="donate">
                 <a class="nav-link" href="{{route('admin.donate')}}">
                 <i class="material-icons">local_atm</i>
                     <p>Donate</p>
                 </a>
             </li>
-            <li class="nav-item ">
+            <li class="nav-item " data-active="comment">
                 <a class="nav-link" href="{{route('admin.comment')}}">
                     <i class="material-icons">speaker_notes</i>
                     <p>Comments</p>
                 </a>
             </li>
-            <li class="nav-item ">
+            <li class="nav-item " data-active="category">
                 <a class="nav-link" href="{{route('admin.category')}}">
                     <i class="material-icons">local_offer</i>
                     <p>Category</p>

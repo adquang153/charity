@@ -169,3 +169,12 @@
       });
     });
 </script>
+<script>
+  $(function(){
+    // active nav-item in page
+    $('.sidebar-wrapper > ul.nav li').each(function(){
+      if( location.href.includes($(this).attr('data-active')) )
+        $(this).addClass('active');
+    });
+  });
+</script>
