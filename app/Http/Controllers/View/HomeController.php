@@ -16,7 +16,9 @@ class HomeController extends Controller
     public function about(){
         return view('view.about');
     }
-
+    public function create(){
+        return view('view.create');
+    }
     public function detail(){
         return view('view.detail');
     }
@@ -35,6 +37,5 @@ class HomeController extends Controller
     public function login(){
         return view('view.login');
     }
-
 
 }
