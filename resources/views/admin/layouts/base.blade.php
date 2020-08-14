@@ -39,7 +39,7 @@ The above copyright notice and this permission notice shall be included in all c
       <!-- Navbar -->
       @include('admin.layouts.header')
       <!-- End Navbar -->
-      <div class="content">
+      <div class="content container-fluid">
         @yield('content')
       </div>
       @include('admin.layouts.footer')
