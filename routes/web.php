@@ -31,8 +31,10 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function(){
 });
 
 // Controller View
-Route::namespace('View')->name('admin.')->group(function(){
+Route::namespace('View')->name('view.')->group(function(){
     Route::get('/', 'HomeController@index')->name('index');
     Route::get('/about', 'HomeController@about')->name('about');
     Route::get('/detail', 'HomeController@detail')->name('detail');
+    Route::get('/create', 'HomeController@detail')->name('detail');
+    Route::get('/articles', 'HomeController@detail')->name('detail');
 });
