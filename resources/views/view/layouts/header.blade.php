@@ -8,13 +8,13 @@
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link " href="explore.html">Các chiến dịch</a>
+                        <a class="nav-link " href="{{route('view.explore')}}">Các chiến dịch</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="articles.html">Tin tức</a>
+                        <a class="nav-link" href="{{route('view.articles')}}">Tin tức</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">Về chúng tôi</a>
+                        <a class="nav-link" href="{{route('view.about')}}">Về chúng tôi</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
