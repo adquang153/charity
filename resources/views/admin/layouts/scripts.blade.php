@@ -173,8 +173,12 @@
   $(function(){
     // active nav-item in page
     $('.sidebar-wrapper > ul.nav li').each(function(){
-      if( location.href.includes($(this).attr('data-active')) )
-        $(this).addClass('active');
+      let active = $(this).attr('data-active');
+      if(active)
+        if( location.href.includes(active) )
+          $(this).addClass('active');
     });
+    if( !$('.sidebar-wrapper > ul.nav li').hasClass('active') )
+      $('.sidebar-wrapper > ul.nav li:first').addClass('active');
   });
 </script>
