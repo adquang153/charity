@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Controller Admin
-Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function(){
+Route::prefix('/admin')->middleware('is_admin')->name('admin.')->namespace('Admin')->group(function(){
     Route::get('/', 'HomeController@index')->name('index');
     Route::resource('/user', 'UserController');
     Route::resource('/post', 'PostController');
