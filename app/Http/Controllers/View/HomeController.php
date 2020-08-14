@@ -20,4 +20,21 @@ class HomeController extends Controller
     public function detail(){
         return view('view.detail');
     }
+    public function explore(){
+        return view('view.explore');
+    }
+    public function articles(){
+        return view('view.articles');
+    }
+    public function detailArticles(){
+        return view('view.detailArticles');
+    }
+    public function register(){
+        return view('view.register');
+    }
+    public function login(){
+        return view('view.login');
+    }
+
+
 }

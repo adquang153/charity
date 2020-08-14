@@ -35,6 +35,10 @@ Route::namespace('View')->name('view.')->group(function(){
     Route::get('/', 'HomeController@index')->name('index');
     Route::get('/about', 'HomeController@about')->name('about');
     Route::get('/detail', 'HomeController@detail')->name('detail');
-    Route::get('/create', 'HomeController@detail')->name('detail');
-    Route::get('/articles', 'HomeController@detail')->name('detail');
+    Route::get('/create', 'HomeController@create')->name('create');
+    Route::get('/explore', 'HomeController@explore')->name('explore');
+    Route::get('/articles', 'HomeController@articles')->name('articles');
+    Route::get('/detail-articles', 'HomeController@detailArticles')->name('detail-articles');
+    Route::get('/register', 'HomeController@register')->name('register');
+    Route::get('/loginfe', 'HomeController@login')->name('loginfe');
 });
