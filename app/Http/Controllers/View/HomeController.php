@@ -35,6 +35,10 @@ class HomeController extends Controller
     public function login(){
         return view('view.login');
     }
+    public function createCampaign(){
+        return view('view.createCampaign');
+    }
+
 
 
 }
