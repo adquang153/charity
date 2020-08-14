@@ -19,9 +19,9 @@ class CreateUsersTable extends Migration
             $table->string('email', 255)->unique();
             $table->string('number_phone', 13)->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password', 32);
+            $table->string('password');
             $table->text('avatar')->nullable();
-            $table->integer('social_id')->nullalble();
+            $table->integer('social_id')->nullalble()->defaut(0);
             $table->boolean('is_admin')->default(false);
             $table->unsignedBigInteger('price_total')->default(0);
             $table->rememberToken();

@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Auth::routes();
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -46,3 +46,5 @@ Route::namespace('View')->name('view.')->group(function(){
     Route::get('/loginfe', 'HomeController@login')->name('loginfe');
     Route::get('/createCampaign', 'HomeController@createCampaign')->name('createCampaign');
 });
+
+Auth::routes();
