@@ -2,10 +2,9 @@
 
 namespace App\Http\Middleware;
 
-use App\Http\Middleware\Authenticate;
 use Closure;
 
-class IsAdmin extends Authenticate
+class IsAdmin 
 {
     /**
      * Handle an incoming request.
@@ -16,10 +15,8 @@ class IsAdmin extends Authenticate
      */
     public function handle($request, Closure $next)
     {
-        if(!auth()->user())
-            return redirect('/login');
-        if(auth()->user()->is_admin=='Y')
-            return redirect('/admin');
-        return $next($request);
+        if(auth()->user()->is_admin == 1)
+            return $next($request);
+        return redirect('/');
     }
 }
