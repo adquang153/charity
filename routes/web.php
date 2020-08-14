@@ -28,6 +28,9 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function(){
     Route::resource('/post', 'PostController');
     Route::resource('/campaign', 'CampaignController');
     Route::resource('/difficult-situation', 'DifficultSituationController');
+    Route::get('/donate', 'PageController@donate')->name('donate');
+    Route::get('/comment', 'PageController@comment')->name('comment');
+    Route::get('/category', 'PageController@category')->name('category');
 });
 
 // Controller View

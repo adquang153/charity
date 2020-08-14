@@ -15,6 +15,7 @@ class DifficultSituationController extends Controller
     public function index()
     {
         //
+        return view('admin.difficult.index');
     }
 
     /**
