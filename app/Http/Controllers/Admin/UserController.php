@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Helpers\Handler;
 
 class UserController extends Controller
 {
@@ -71,6 +72,8 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $images = Handler::uploadFiles($request->image, 'user');
+        dd($images);
     }
 
     /**

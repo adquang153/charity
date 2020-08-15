@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Controller Admin
-Route::prefix('/admin')->middleware('is_admin')->name('admin.')->namespace('Admin')->group(function(){
+Route::prefix('/admin')->middleware(['auth','is_admin'])->name('admin.')->namespace('Admin')->group(function(){
     Route::get('/', 'HomeController@index')->name('index');
     Route::resource('/user', 'UserController');
     Route::resource('/post', 'PostController');
@@ -33,6 +33,7 @@ Route::prefix('/admin')->middleware('is_admin')->name('admin.')->namespace('Admi
     Route::get('/category', 'PageController@category')->name('category');
 });
 
+Auth::routes();
 // Controller View
 Route::namespace('View')->name('view.')->group(function(){
     Route::get('/', 'HomeController@index')->name('index');
@@ -46,5 +47,3 @@ Route::namespace('View')->name('view.')->group(function(){
     Route::get('/loginfe', 'HomeController@login')->name('loginfe');
     Route::get('/createCampaign', 'HomeController@createCampaign')->name('createCampaign');
 });
-
-Auth::routes();
