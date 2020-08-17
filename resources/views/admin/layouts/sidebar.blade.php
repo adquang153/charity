@@ -18,13 +18,13 @@
             <li class="nav-item " data-active="user">
                 <a class="nav-link" href="{{route('admin.user.index')}}">
                     <i class="material-icons">person</i>
-                    <p>User Profile</p>
+                    <p>Users</p>
                 </a>
             </li>
             <li class="nav-item " data-active="campaign">
                 <a class="nav-link" href="{{route('admin.campaign.index')}}">
                 <i class="material-icons">payments</i>
-                    <p>Campaign</p>
+                    <p>Campaigns</p>
                 </a>
             </li>
             <li class="nav-item " data-active="difficult">
@@ -36,7 +36,7 @@
             <li class="nav-item " data-active="post">
                 <a class="nav-link" href="{{route('admin.post.index')}}">
                 <i class="material-icons">pageview</i>
-                    <p>Post</p>
+                    <p>Posts</p>
                 </a>
             </li>
             <li class="nav-item " data-active="donate">
@@ -54,7 +54,7 @@
             <li class="nav-item " data-active="category">
                 <a class="nav-link" href="{{route('admin.category')}}">
                     <i class="material-icons">local_offer</i>
-                    <p>Category</p>
+                    <p>Categories</p>
                 </a>
             </li>
         </ul>

@@ -24,6 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Controller Admin
 Route::prefix('/admin')->middleware(['auth','is_admin'])->name('admin.')->namespace('Admin')->group(function(){
     Route::get('/', 'HomeController@index')->name('index');
+    Route::post('/user/delete-users', 'UserController@deleteUsers')->name('user.delete-users');
     Route::resource('/user', 'UserController');
     Route::resource('/post', 'PostController');
     Route::resource('/campaign', 'CampaignController');

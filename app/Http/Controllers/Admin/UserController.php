@@ -5,9 +5,17 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Helpers\Handler;
+use App\Services\UserService;
 
 class UserController extends Controller
 {
+
+    private $user;
+
+    public function __construct(UserService $user){
+        $this->user = $user;
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +24,8 @@ class UserController extends Controller
     public function index()
     {
         //
-        return view('admin.user.index');
+        $listUser = $this->user->listUser();
+        return view('admin.user.index', compact('listUser'));
     }
 
     /**
@@ -60,6 +69,8 @@ class UserController extends Controller
     public function edit($id)
     {
         //
+        $user = $this->user->findUser($id);
+        return view('admin.user.edit', compact('user'));
     }
 
     /**
@@ -72,8 +83,8 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $images = Handler::uploadFiles($request->image, 'user');
-        dd($images);
+        // $result = $this->user->updateProfileUser($id, $request->all());
+
     }
 
     /**
@@ -85,5 +96,8 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function deleteUsers( Request $request){
+        return json_encode($this->user->deleteUsers($request->ids));
     }
 }

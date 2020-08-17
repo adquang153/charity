@@ -29,11 +29,12 @@ The above copyright notice and this permission notice shall be included in all c
   <link href="{{asset('css/material-dashboard.css')}}?v=2.1.2" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="{{asset('css/demo.css')}}" rel="stylesheet" />
+  <link rel="stylesheet" href="{{asset('css/admin.css')}}">
   @yield('css')
 </head>
 
 <body class="">
-  <div class="wrapper ">
+  <div class="wrapper">
     @include('admin.layouts.sidebar')
     <div class="main-panel">
       <!-- Navbar -->
@@ -137,12 +138,7 @@ The above copyright notice and this permission notice shall be included in all c
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="{{asset('js/demo.js')}}"></script>
   @include('admin.layouts.scripts')
-  <script>
-    $(document).ready(function() {
-      // Javascript method's body can be found in assets/js/demos.js
-      md.initDashboardPageCharts();
-    });
-  </script>
+  @yield('scripts')
 </body>
 
 </html>

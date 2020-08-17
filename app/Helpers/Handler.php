@@ -5,13 +5,16 @@ use Storage;
 
 class Handler{
 
-    public static function uploadFiles($images, $type){
+    public static function uploadFile($images, $directory){
         $extension = $images->extension();
-        $pathFile = 'public/images/'. $type . '/' . time() . '.' . $extension;
-        $file = Storage::put($pathFile, $images->__toString());
-        dd($file);
+        $pathFile = 'public/storage/'. $directory . '/' . time() . '.' . $extension;
+        $file = $images->move('storage/'.$directory, $pathFile);
+        return str_replace('\\','/',$file);
     }
 
+    public static function deleteFile($images){
+        Storage::delete($images);
+    }
 }
 
 ?>

@@ -182,3 +182,61 @@
       $('.sidebar-wrapper > ul.nav li:first').addClass('active');
   });
 </script>
+<script>
+  $(document).ready(function() {
+    // Javascript method's body can be found in assets/js/demos.js
+    md.initDashboardPageCharts();
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+      }
+    });
+  });
+  $('.del-arr').on('click',function(){
+    let check = $('table').find('input:checked').length;
+    if(!check){
+      Swal.fire(
+          'Please select item!',
+      );
+      return false;
+    }
+    let url = $(this).attr('data-del');
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.value){
+          let ids = [];
+          $('table input:checked').each(function(i){
+            ids[i] = $(this).val();
+          });
+          $.ajax({
+            url : url,
+            method: 'POST',
+            dataType: 'json',
+            data: {ids},
+            success:function(res){
+              console.log(res);
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                ).then(()=>{location.reload()});
+            },
+            error:function(err){
+              Swal.fire(
+                    'Error!',
+                    '',
+                    'error'
+                ).then(()=>{location.reload();})
+            }
+          });
+        }
+      });
+  });
+</script>
