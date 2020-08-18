@@ -11,8 +11,11 @@ class UserService{
        $list = User::paginate(10);
        return $list;
     }
-    public function findUser($id){
-        $user = User::find($id);
+    public function findUser($id, $type=""){
+        if($type == "profile")
+            $user = User::where('is_admin', User::USER)->find($id);
+        else
+            $user = User::find($id);
         return $user;
     }
 

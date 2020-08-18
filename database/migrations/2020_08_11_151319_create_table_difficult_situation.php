@@ -16,6 +16,7 @@ class CreateTableDifficultSituation extends Migration
         Schema::create('difficult_situation', function (Blueprint $table) {
             $table->id();
             $table->string('name', 50);
+            $table->longText('description');
             $table->string('address',255);
             $table->string('phone',13);
             $table->timestamps();

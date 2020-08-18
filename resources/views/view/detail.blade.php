@@ -12,10 +12,8 @@
                 <div class="col-lg-10">
                     <div class="media">
                         <div class="media-body">
-                            <h1 class="mt-0 font-weight-normal">The Kapusta</h1>
-                            <p class="mb-1 text-secondary">The Kapusta là dự án thành lập bởi tập thể học sinh khối
-                                Nga trường THPT Hà Nội- Amsterdam nhằm gây quỹ từ thiện giúp đỡ cho học sinh nghèo
-                                trên các phương diện sinh hoạt, học tập, di chuyển.</p>
+                            <h1 class="mt-0 font-weight-normal">{{$data->name}}</h1>
+                            <p class="mb-1 text-secondary">{{$data->description}}</p>
                         </div>
                     </div>
                 </div>
@@ -43,22 +41,29 @@
                 <article>
                     <div class="row">
                         <div class="col-lg-8">
-                            <div
-                                class="embed-responsive embed-responsive-16by9 campaign-style1 no-shadow mb-3 mb-md-0">
-                                <img class="embed-responsive-item"
-                                    src="https://kindmate.net/Uploads/2020/08/03/5f27e8f3312be-dsc-4531-jpg"> </div>
+                            @if($data->images)
+                            <div class="embed-responsive embed-responsive-16by9 campaign-style1 no-shadow mb-3 mb-md-0">
+                                <img class="embed-responsive-item" src="https://kindmate.net/Uploads/2020/08/03/5f27e8f3312be-dsc-4531-jpg">
+                            </div>
+                            @endif
+                            @if($data->video)
+                            <div class="embed-responsive embed-responsive-16by9 campaign-style1 no-shadow mb-3 mb-md-0">
+                                {!! $data->video !!}
+                            </div>
+                            @endif
                         </div>
                         <div class="col-lg-4">
                             <div class=" d-flex flex-column align-items-start  bg-light p-3 h-100">
                                 <div class="w-100">
                                     <div class="campagin-progress">
                                         <div class="d-flex justify-content-between align-items-end">
-                                            <h4 class="text-primary mb-0 h3">500,000 đ
-                                                <small>(2%)</small></h4>
-                                            <span>30 tr đ</span>
+                                            <?php $perCent = ($data->price_total / $data->amount) *100 ?>
+                                            <h4 class="text-primary mb-0 h3">{{number_format($data->price_total)}} đ
+                                                <small>({{ $perCent }}%)</small></h4>
+                                            <span>{{number_format($data->amount)}} đ</span>
                                         </div>
                                         <div class="progress my-2">
-                                            <div class="progress-bar" style="width: 2%" role="progressbar"
+                                            <div class="progress-bar" style="width: {{$perCent}}%" role="progressbar"
                                                 aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                         <div class="d-flex justify-content-between align-items-end">
@@ -66,7 +71,7 @@
                                                 <strong>1</strong> người ủng hộ
                                             </div>
                                             <div class="user-count">
-                                                Còn lại 356 ngày
+                                                {{ (new Carbon\Carbon($data->date_end))->diffForHumans()}}
                                             </div>
                                         </div>
                                     </div>
@@ -74,27 +79,14 @@
                                         <a href="https://kindmate.net/donate/1395"
                                             class="btn btn-danger btn-lg btn-block">Ủng hộ ngay</a>
                                         <div class="divider"></div>
-                                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://kindmate.net/project/1395/the-kapusta"
-                                            class="btn btn-default btn-lg bg-white btn-block mt-3">Chia sẻ ngay</a>
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{url()->current()}}"
+                                          target="_blank"  class="btn btn-default btn-lg bg-white btn-block mt-3 border">Chia sẻ ngay</a>
 
                                     </div>
                                 </div>
                                 <div class="mb-2">
                                     <div class="small">
-                                        <div class="hints">Tips: Bạn có biết, mỗi lượt chia sẻ của bạn có thể mang
-                                            lại 2
-                                            lượt ủng hộ từ bạn bè.</div>
-                                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://kindmate.net/project/1395/the-kapusta"
-                                            class="text-info mt-1">
-                                            <i class="zmdi zmdi-facebook mr-1"></i> Chia sẻ ngay
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="mt-auto w-100">
-                                    <div class="small text-secondary mb-1">
-                                        ĐƠN VỊ TỔ CHỨC
-                                    </div>
-                                    <div class="media align-items-center">
+                                        <div class="hints">Tips: Bạn có biết, mỗi lượt chia sẻ của bạn có thể mang lại 2 lượt ủng hộ từ bạn bè.</div>
                                     </div>
                                 </div>
                                 <hr>
@@ -104,10 +96,10 @@
                                     </div>
                                     <div class="media align-items-center">
                                         <img width="50" class="mr-2 avatar "
-                                            src="https://kindmate.net/Uploads/2020/08/03/5f2819f599ef5-kapusta-a--nh-ava.jpg"
+                                            src="{{ asset($data->user->avatar ?? 'images/user.png') }}"
                                             alt="The Kapusta">
                                         <div class="media-body">
-                                            <p class="dotdotdot mb-0">The Kapusta</p>
+                                            <p class="dotdotdot mb-0">{{$data->user->name}}</p>
                                             <div class="campaign-summary">
                                                 <a data-toggle="pill" href="#creator"
                                                     class="small change-tab-to-creator">Xem thông tin</a>
@@ -126,96 +118,7 @@
                             <div id="campaign-content">
                                 <h3 class="my-3 font-weight-bold h3">Nội dung chiến dịch</h3>
                                 <div class="content-campaign">
-                                    <p><strong><u>I. Giới thiệu chung: </u></strong></p>
-                                    <p>The Kapusta - Bắp Cải Nhỏ là dự án thiện nguyện thành lập bởi tập thể học
-                                        sinh
-                                        lớp Nga
-                                        khóa 17-20 trường THPT Hà Nội- Amsterdam nhằm gây quỹ từ thiện giúp đỡ cho
-                                        các
-                                        học sinh
-                                        nghèo và những mảnh đời còn chịu nhiều thiếu thốn trong cuộc sống trên các
-                                        phương diện
-                                        sinh hoạt, học tập và di chuyển. Dự án đã hoạt động thành công được 3 năm và
-                                        hiện được
-                                        tập thể lớp Nga khoá 19-22 tiếp tục thực hiện. </p>
-                                    <p><strong><u> II. Sứ mệnh của dự án: </u></strong></p>
-                                    <p>Với đối tượng hướng đến là các em học sinh mẫu giáo, tiểu học đang theo học
-                                        tại
-                                        các
-                                        trường của vùng nông thôn nghèo khu vực lân cận Thành phố Hà Nội, The
-                                        Kapusta đã
-                                        được
-                                        BTC ấp ủ bằng tất cả tâm huyết với nguyện vọng cải thiện cơ sở vật chất và
-                                        môi
-                                        trường
-                                        giáo dục, phát triển của các em. Nhờ có vậy, không những các em học sinh sẽ
-                                        được
-                                        học tập
-                                        trong một không gian gần gũi, thân thiện hơn để có được sự hứng thú, động
-                                        lực
-                                        đến trường
-                                        mà qua đây, dự án còn có thể thực hiện mong muốn cải thiện mỹ quan sư phạm
-                                        cho
-                                        vùng nông
-                                        thôn của Việt Nam. Và chính từ sự cải thiện trong giáo dục này, The Kapusta
-                                        mong
-                                        muốn
-                                        góp phần đem lại sự phát triển bền vững hơn cho cuộc sống nơi nông thôn. Bên
-                                        cạnh đó,
-                                        BTC còn triển khai một số buổi gây quỹ từ thiện nhằm khơi dậy lòng hảo tâm,
-                                        lan
-                                        tỏa ý
-                                        thức về sự san sẻ, đồng cảm và giá trị nhân đạo tới cộng đồng. </p>
-                                    <p><strong><u>III, Giới thiệu mùa bốn: SUAVIOR:</u></strong></p>
-                                    <p>Sau ba mùa hoạt động trước vô cùng thành công với các hoạt động cải thiện cơ
-                                        sở
-                                        vật chất
-                                        và chính thức bước sang mùa thứ tư, The Kapusta sẽ tiếp nối hoạt động sơn
-                                        tường,
-                                        trang
-                                        trí và cải thiện cơ sở vật chất của các trường có điều kiện khó khăn . Đồng
-                                        thời, bên
-                                        cạnh sự kiện chính giống các mùa trước, The Kapusta sẽ tiếp tục ở rộng quy
-                                        mô và
-                                        làm mới
-                                        mình với nhiều hoạt động mới mẻ. “Suavior: nụ hôn gió” được lựa chọn để trở
-                                        thành chủ đề
-                                        của mùa hoạt động này nhằm bảo vệ tâm hồn trong sáng của các em khỏi những
-                                        tổn
-                                        thương
-                                        trong cuộc sống và giữ lại sự ngây thơ ấy giữa nhịp sống nhanh chóng của
-                                        cuộc
-                                        đời. </p>
-                                    <p><strong><u>IV, Các hoạt động của dự án: </u></strong></p>
-                                    <p> 1. Tiền sự kiện BAKEOH!LOGY: Sự kiện được tổ chức vào 18/08/2020 tại Trường
-                                        THPT
-                                        Chuyên
-                                        Hà Nội - Amsterdam nhằm gây quỹ cũng như thu thập sách cũ cho mục đích từ
-                                        thiện.
-                                        Đến với
-                                        sự kiện, người tham gia có thể mang những quyển sách cũ không còn dùng nữa
-                                        để
-                                        đổi những
-                                        chiếc bánh, đồ uống do các thành viên BTC The Kapusta chuẩn bị cũng như mua
-                                        những loại
-                                        đồ ăn, đồ uống handmade. Toàn bộ số sách sẽ được tặng cho các em học sinh
-                                        khó
-                                        khăn. </p>
-                                    <p>2.Sự kiện chính Ngày sơn tường: Sự kiện sẽ diễn ra vào cuối tháng 8 năm 2020.
-                                        Dự
-                                        án sẽ
-                                        tới 1 điểm trường khó khăn để trang trí, sơn sửa lại cho ngôi trường và xây
-                                        dựng
-                                        tủ sách
-                                        tình thương nhằm tạo ra một không gian mới mẻ, sáng sủa và thu hút giúp khơi
-                                        dậy
-                                        đam mê
-                                        đến trường của các em. </p>
-                                    <p>____________________ </p>
-                                    <p>Thông tin liên hệ:</p>
-                                    <p>Đoàn Minh Khuê: 0867200414 </p>
-                                    <p>Phùng Thanh Hà: 0944465691</p>
-                                    <p>Email: thekapusta01@gmail.com</p>
+                                    {!! $data->content !!}
                                 </div>
                             </div>
 

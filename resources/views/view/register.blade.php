@@ -15,40 +15,51 @@
                                 <div class="card card-shadow">
                                     <div class="card-body p-4">
                                         <h3 class="mb-3">Register</h3>
-                                        <form method="POST" action="https://kindmate.net/register">
-                                            <input type="hidden" name="_token"
-                                                value="dlGfAzDWw8sxyxrDMKGtLh2xzL0a6jKJRyNNnZ3d">
+                                        <form method="POST" action="{{ route('register') }}">
+                                        @csrf
                                             <div class="form-group">
-                                                <label for="name">Name</label>
-                                                <input id="name" type="text" class="form-control" name="name" value=""
-                                                    required="" autofocus="">
-
+                                                <label for="name">{{ __('Name') }}</label>
+                                                <input id="name" type="text" class="form-control  @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required  autofocus>
+                                                @error('name')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
-                                                        <label for="email">E-Mail Address</label>
-                                                        <input id="email" type="email" class="form-control" name="email"
-                                                            value="" required="">
-
+                                                        <label for="email">{{ __('E-Mail Address') }}</label>
+                                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required >
+                                                        @error('email')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
-                                                        <label for="email">Phone number</label>
-                                                        <input id="phone" type="text" class="form-control" name="phone"
-                                                            value="" required="">
-
+                                                        <label for="phone">{{ __('Phone number') }}</label>
+                                                        <input id="phone" type="text" class="form-control @error('password') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required>
+                                                        @error('phone')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
-                                                        <label for="password">Password</label>
-                                                        <input id="password" type="password" class="form-control"
-                                                            name="password" required="">
-
+                                                        <label for="password">{{ __('Password') }}</label>
+                                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required>
+                                                        @error('password')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
@@ -62,7 +73,7 @@
 
                                             <div class="form-group mb-0">
                                                 <button type="submit" class="btn btn-primary">
-                                                    Register
+                                                {{ __('Register') }}
                                                 </button>
                                             </div>
                                         </form>

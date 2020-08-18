@@ -18,13 +18,15 @@ class CreateTableCampaign extends Migration
             $table->string('name', 255);
             $table->boolean('status')->default(false);
             $table->text('content');
+            $table->text('description');
             $table->text('images')->nullable();
             $table->date('date_start');
             $table->date('date_end');
             $table->string('bank_account')->nullable();
             $table->unsignedBigInteger('amount');
+            $table->unsignedBigInteger('price_total')->nullable()->default(0);
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('difficult_situation_id');
+            $table->unsignedBigInteger('difficult_situation_id')->nullable();
             $table->unsignedBigInteger('category_id');
             $table->timestamps();
         });
