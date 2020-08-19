@@ -4,6 +4,7 @@ namespace App\Services;
 
 use Illuminate\Support\Facades\Password;
 use App\User;
+use App\Helpers\Handler;
 
 class UserService{
 
@@ -20,7 +21,21 @@ class UserService{
     }
 
     public function updateProfileUser($id, $data){
+        //Tìm user với điều kiện không phải là admin
+        $user = $this->findUser($id, 'profile');
 
+        // Nếu không tìm thấy user thì return false
+        if(!$user)
+            return false;
+
+        if(isset($data['avatar'])){
+            // Kiểm tra nếu user đã có avatar thì xóa avt cũ
+            if($user->avatar){
+                Handler::deleteFile($user->avatar);
+            }
+            $data['avatar'] = Handler::uploadFile($data['avatar'], 'user');
+        }
+        return $user->update($data);
     }
 
     public function deleteUsers($arr){

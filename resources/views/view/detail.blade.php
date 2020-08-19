@@ -43,7 +43,7 @@
                         <div class="col-lg-8">
                             @if($data->images)
                             <div class="embed-responsive embed-responsive-16by9 campaign-style1 no-shadow mb-3 mb-md-0">
-                                <img class="embed-responsive-item" src="https://kindmate.net/Uploads/2020/08/03/5f27e8f3312be-dsc-4531-jpg">
+                                <img class="embed-responsive-item" src="{{asset($data->images)}}">
                             </div>
                             @endif
                             @if($data->video)
@@ -59,7 +59,7 @@
                                         <div class="d-flex justify-content-between align-items-end">
                                             <?php $perCent = ($data->price_total / $data->amount) *100 ?>
                                             <h4 class="text-primary mb-0 h3">{{number_format($data->price_total)}} đ
-                                                <small>({{ $perCent }}%)</small></h4>
+                                                <small>({{ number_format($perCent,2,'.',"") }}%)</small></h4>
                                             <span>{{number_format($data->amount)}} đ</span>
                                         </div>
                                         <div class="progress my-2">

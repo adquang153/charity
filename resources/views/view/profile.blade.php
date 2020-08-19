@@ -4,14 +4,17 @@
 <?php $check = $user->id == Auth()->user()->id??0; ?>
 
 <div class="container bootstrap snippet py-5 mt-5">
-    <div class="row">
+    <form class="row" action="{{route('view.edit-profile', $user->id)}}" method="post" id="registrationForm" enctype="multipart/form-data">
+        @if($check)
+            @csrf
+        @endif
         <div class="col-sm-3">
             <!--left col-->
             <div class="text-center">
                 <img src="{{asset( $user->avatar ?? 'images/user.png')}}"
                     class="avatar-profile img-circle img-thumbnail" width="200px" alt="avatar">
                 <h6 class="mt-3">Change Avatar</h6>
-                <input type="file" class="text-center center-block file-upload">
+                <input type="file" name="avatar" class="text-center center-block file-upload">
             </div>
             </hr><br>
         </div>
@@ -23,10 +26,7 @@
                         <h1>{{$user->name}}</h1>
                     </div>
                     <hr>
-                    <form class="form" action="{{route('view.edit-profile', $user->id)}}" method="post" id="registrationForm">
-                        @if($check)
-                            @csrf
-                        @endif
+                    <div class="form">
                         <div class="form-group">
                             <div class="col-xs-6">
                                 <label for="name">
@@ -38,10 +38,10 @@
                         </div>
                         <div class="form-group">
                             <div class="col-xs-6">
-                                <label for="phone">
+                                <label for="number_phone">
                                     <h4>Phone</h4>
                                 </label>
-                                <input type="text" class="form-control" name="phone" id="phone"
+                                <input type="number" class="form-control" min=0 name="number_phone" id="number_phone"
                                     placeholder="enter phone" value="{{$user->number_phone}}" title="enter your phone number if any.">
                             </div>
                         </div>
@@ -72,7 +72,7 @@
                             </div>
                         </div>
                         @endif
-                    </form>
+                    </div>
                     <hr>
                 </div>
                 <!--/tab-pane-->

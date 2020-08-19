@@ -45,11 +45,11 @@ Route::namespace('View')->name('view.')->group(function(){
     Route::get('/detail-articles', 'HomeController@detailArticles')->name('detail-articles');
     // Route::get('/register', 'HomeController@register')->name('register');
     Route::get('/loginfe', 'HomeController@login')->name('loginfe');
-    Route::get('/createCampaign', 'HomeController@createCampaign')->name('createCampaign');
+    // Route::get('/createCampaign', 'HomeController@createCampaign')->name('createCampaign');
     Route::get('/profile/{id}', 'HomeController@profile')->name('profile');
     Route::middleware('auth')->group(function(){
-        Route::get('/create', 'HomeController@create')->name('create');
-        Route::post('/store-campaign', 'HomeController@storeCampaign')->name('store-campaign');
+        Route::get('/campaign/create', 'HomeController@createCampaign')->name('campaign.create');
+        Route::post('/campaign/store', 'HomeController@storeCampaign')->name('campaign.store');
         Route::post('/profile/{id}', 'HomeController@editProfile')->name('edit-profile');
     });
 });

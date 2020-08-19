@@ -29,16 +29,17 @@ class HomeController extends Controller
     public function about(){
         return view('view.about');
     }
-    public function create(){
+
+    public function createCampaign(){
         $listCate = $this->category->getAllCategory();
-        return view('view.create', compact('listCate'));
+        return view('view.createCampaign', compact('listCate'));
     }
 
     public function storeCampaign(CampaignRequest $request){
         $result = $this->campaign->createCampaign($request->all());
         if($result)
-            return redirect()->route('view.detail', $result->id);
-        return redirect()->back();
+            return redirect()->route('view.detail', $result->id)->with('success', 'Created Campaign!');
+        return redirect()->back()->with('error','Cannot Create Campaign!');
     }
 
     public function detail($id){
@@ -62,9 +63,7 @@ class HomeController extends Controller
     public function login(){
         return view('view.login');
     }
-    public function createCampaign(){
-        return view('view.createCampaign');
-    }
+    
     public function profile($id){
         $user = $this->user->findUser($id, 'profile');
         if(!$user)
@@ -72,6 +71,9 @@ class HomeController extends Controller
         return view('view.profile', compact('user'));
     }
     public function editProfile(Request $request, $id){
-
+        $user = $this->user->updateProfileUser($id, $request->all());
+        if($user)
+            return redirect()->route('view.profile', $id)->with('success', 'Updated Profile Success!');
+        return redirect()->back()->with('error', 'Cannot Be Updated!');
     }
 }

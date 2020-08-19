@@ -21,10 +21,10 @@
               <a href="about.html">Tìm hiểu</a>
             </p>
             <div class="take-action-buttons mb-3">
-              <a href="create.html" class="btn btn-danger btn-lg">Tạo
+              <a href="{{ route('view.campaign.create') }}" class="btn btn-danger btn-lg">Tạo
                 chiến
                 dịch</a>
-              <a href="explore.html" class="btn btn-primary btn-lg">Các chiến dịch</a>
+              <a href="{{ route('view.explore') }}" class="btn btn-primary btn-lg">Các chiến dịch</a>
             </div>
           </div>
         </div>
@@ -735,7 +735,7 @@
                 <p class="my-2">
                   Khởi tạo chiến dịch của bạn ngay lập tức, chỉ với vài thao tác đơn giản và dễ dàng
                 </p>
-                <a href="create.html" class="btn btn-lg btn-primary mt-3">Tạo chiến dịch</a>
+                <a href="{{ route('view.campaign.create') }}" class="btn btn-lg btn-primary mt-3">Tạo chiến dịch</a>
               </div>
             </div>
             <div class="col-sm-6">
@@ -743,7 +743,7 @@
                 <img src="https://kindmate.net/svg/yeu-thuong.svg" alt="yeu-thuong" class="mb-4">
                 <h4 class="my-2">Tôi muốn ủng hộ</h4>
                 <p class="my-2">Hàng trăm chiến dịch đang cần sự trợ giúp của bạn, hãy cùng chúng tôi khám phá nhé</p>
-                <a href="explore.html" class="btn btn-lg btn-danger mt-3">Các chiến dịch</a>
+                <a href="{{ route('view.explore') }}" class="btn btn-lg btn-danger mt-3">Các chiến dịch</a>
               </div>
             </div>
           </div>
