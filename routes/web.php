@@ -39,17 +39,21 @@ Auth::routes();
 Route::namespace('View')->name('view.')->group(function(){
     Route::get('/', 'HomeController@index')->name('index');
     Route::get('/about', 'HomeController@about')->name('about');
-    Route::get('/detail/{id}', 'HomeController@detail')->name('detail');
-    Route::get('/explore', 'HomeController@explore')->name('explore');
-    Route::get('/articles', 'HomeController@articles')->name('articles');
-    Route::get('/detail-articles', 'HomeController@detailArticles')->name('detail-articles');
-    // Route::get('/register', 'HomeController@register')->name('register');
+
+    //campaign
+    Route::get('/explore', 'CampaignController@explore')->name('explore');
+    Route::get('campaign/detail/{id}', 'CampaignController@detail')->name('campaign.detail');
+    Route::get('/campaign/create', 'CampaignController@createCampaign')->name('campaign.create')->middleware('auth');
+    Route::post('/campaign/store', 'CampaignController@storeCampaign')->name('campaign.store')->middleware('auth');
+
+    //post
+    Route::get('/articles', 'ArticleController@articles')->name('articles');
+    Route::get('/articles/detail', 'ArticleController@detailArticles')->name('articles.detail');
+
     Route::get('/loginfe', 'HomeController@login')->name('loginfe');
-    // Route::get('/createCampaign', 'HomeController@createCampaign')->name('createCampaign');
-    Route::get('/profile/{id}', 'HomeController@profile')->name('profile');
-    Route::middleware('auth')->group(function(){
-        Route::get('/campaign/create', 'HomeController@createCampaign')->name('campaign.create');
-        Route::post('/campaign/store', 'HomeController@storeCampaign')->name('campaign.store');
-        Route::post('/profile/{id}', 'HomeController@editProfile')->name('edit-profile');
-    });
+
+    //profile
+    Route::get('/profile/{id}', 'UserController@profile')->name('profile');
+    Route::post('/profile/{id}', 'UserController@editProfile')->name('edit-profile')->middleware('auth');
+
 });

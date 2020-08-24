@@ -27,53 +27,7 @@ class HomeController extends Controller
     }
 
     public function about(){
-        return view('view.about');
+        return view('view.pages.about');
     }
 
-    public function createCampaign(){
-        $listCate = $this->category->getAllCategory();
-        return view('view.createCampaign', compact('listCate'));
-    }
-
-    public function storeCampaign(CampaignRequest $request){
-        $result = $this->campaign->createCampaign($request->all());
-        if($result)
-            return redirect()->route('view.detail', $result->id)->with('success', 'Created Campaign!');
-        return redirect()->back()->with('error','Cannot Create Campaign!');
-    }
-
-    public function detail($id){
-        $data = $this->campaign->findCampaign($id);
-        if(!$data)
-            abort(404);
-        return view('view.detail', compact('data'));
-    }
-    public function explore(){
-        return view('view.explore');
-    }
-    public function articles(){
-        return view('view.articles');
-    }
-    public function detailArticles(){
-        return view('view.detailArticles');
-    }
-    public function register(){
-        return view('view.register');
-    }
-    public function login(){
-        return view('view.login');
-    }
-    
-    public function profile($id){
-        $user = $this->user->findUser($id, 'profile');
-        if(!$user)
-            abort(404);
-        return view('view.profile', compact('user'));
-    }
-    public function editProfile(Request $request, $id){
-        $user = $this->user->updateProfileUser($id, $request->all());
-        if($user)
-            return redirect()->route('view.profile', $id)->with('success', 'Updated Profile Success!');
-        return redirect()->back()->with('error', 'Cannot Be Updated!');
-    }
 }
