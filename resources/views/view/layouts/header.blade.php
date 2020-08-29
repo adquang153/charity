@@ -1,7 +1,8 @@
 <header class="header">
     <nav class="navbar navbar-expand-lg navbar-light navbar-kindmate">
         <div class="container">
-            <a class="navbar-brand big" href="{{ url('/') }}">{{ config('app.name', 'Laravel') }}</a>
+            <!-- <a class="navbar-brand big" href="{{ url('/') }}">{{ config('app.name', 'Laravel') }}</a> -->
+            <a class="navbar-brand logo big" href="{{ url('/') }}"><img src="{{asset('images/logo.png')}}" width="100%" alt="logo"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>

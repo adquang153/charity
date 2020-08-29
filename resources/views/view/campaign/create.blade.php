@@ -24,7 +24,7 @@
                 <div class="row">
                     <div class="col-md-8 order-2 order-md-1">
                         <div class="embed-responsive embed-responsive-16by9 image-file-com">
-                            <div class="close">
+                            <div class="close" style="">
                                 ×
                             </div>
                             <div class="embed-responsive-item d-flex justify-content-center align-items-center text-center">
@@ -108,7 +108,27 @@
     <script>
         $(function() {
             CKEDITOR.replace('editor1');
+            var readURL = function(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('.image-file-com').css({'background' : `url(${e.target.result}) no-repeat center center`, 'background-size':'cover'});
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            $("#campaign-cover").on('change', function(){
+                if($(this).val() !== "")
+                    readURL(this);
+                else{
+                    $('.image-file-com').css({'background':'#f3f3f3'});
+                    $("#campaign-cover").val('');
+                }
+            });
+           $('.close').on('click',function(){
+            $('.image-file-com').css({'background':'#f3f3f3'});
+            $("#campaign-cover").val('');
+           });
         });
-
     </script>
 @endsection

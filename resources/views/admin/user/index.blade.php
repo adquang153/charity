@@ -20,8 +20,8 @@
                     <th>ID</th>
                     <th>Name</th>
                     <th>Email</th>
+                    <th>Phone</th>
                     <th>Avatar</th>
-                    <th>Type</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -40,18 +40,14 @@
                         <td>{{++$index}}</td>
                         <td>{{$user->user_name}}</td>
                         <td>{{$user->email}}</td>
+                        <td>{{$user->number_phone}}</td>
                         <td class="avatar-user"><img src="{{asset($user->avatar)}}" alt="avatar"></td>
-                        <td>
-                            <select name="" id="" class="form-control pl-2">
-                                <option value="1">Admin</option>
-                                <option value="0" {{$user->is_admin ? '' : 'selected'}}>User</option>
-                            </select>
-                        </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
+        {{$listUser->links()}}
         <!-- end table-respon -->
         @endif
     </div>

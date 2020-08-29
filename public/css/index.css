@@ -226,3 +226,7 @@ img.embed-responsive-item {
 .carousel-indicators li.active {
     background-color: #654AD2;
 }
+
+.logo{
+    width: 10%;
+}

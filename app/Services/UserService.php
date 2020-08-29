@@ -9,7 +9,7 @@ use App\Helpers\Handler;
 class UserService{
 
     public function listUser(){
-       $list = User::paginate(10);
+       $list = User::where('is_admin',USER::USER)->paginate(10);
        return $list;
     }
     public function findUser($id, $type=""){

@@ -2,7 +2,7 @@
     <div class="container py-3">
         <div class="row">
             <div class="col-md-5 mt-2">
-                <img class="logo-img" height="30" src="https://kindmate.net/svg/logo.svg" alt="Kindmate">
+                <img class="logo-img" height="70" src="{{asset('images/logo.png')}}" alt="logo">
                 <ul class="list-unstyled mt-4">
                     <li class="my-1">
                         <i class="fas fa-map-marker-alt mr-2"></i>
