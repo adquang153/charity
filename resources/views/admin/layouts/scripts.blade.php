@@ -191,7 +191,10 @@
         'X-CSRF-TOKEN': "{{ csrf_token() }}"
       }
     });
-  });
+    $('table > tbody > tr').on('dblclick',function(){
+      if($(this).attr('data-red'))
+          location.href = $(this).attr('data-red');
+    });
   $('.del-arr').on('click',function(){
     let check = $('table').find('input:checked').length;
     if(!check){
@@ -238,5 +241,6 @@
           });
         }
       });
+    });
   });
 </script>

@@ -28,6 +28,8 @@ Route::prefix('/admin')->middleware(['auth','is_admin'])->name('admin.')->namesp
     Route::resource('/user', 'UserController');
     Route::resource('/post', 'PostController');
     Route::resource('/campaign', 'CampaignController');
+    Route::post('/campaign/delete', 'CampaignController@deletes')->name('campaign.delete');
+    Route::get('/campaign/change-status/{id}', 'CampaignController@changeStatus')->name('campaign.change-status');
     Route::resource('/difficult', 'DifficultSituationController');
     Route::get('/donate', 'PageController@donate')->name('donate');
     Route::get('/comment', 'PageController@comment')->name('comment');

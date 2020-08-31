@@ -52,7 +52,7 @@
     <div class="col-md-4">
         <div class="card card-profile">
             <div class="card-avatar">
-                <a href="javascript:;">
+                <a href="javascript:void(0);">
                     <img class="img" src="{{asset($user->avatar)}}" />
                 </a>
             </div>

@@ -17,7 +17,7 @@
                 <thead class=" text-primary">
                 <tr>
                     <th></th>
-                    <th>ID</th>
+                    <th>#</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Phone</th>
@@ -26,7 +26,7 @@
                 </thead>
                 <tbody>
                     @foreach($listUser as $index=>$user)
-                    <tr>
+                    <tr data-red="{{route('admin.user.edit', $user->id)}}">
                         <td>
                             <div class="form-check">
                                 <label class="form-check-label">

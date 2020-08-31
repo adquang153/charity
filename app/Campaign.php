@@ -18,6 +18,10 @@ class Campaign extends Model
     }
 
     public function difficult_situation(){
-        return $this->hasOne('App\DifficultSituation');
+        return $this->belongsTo('App\DifficultSituation');
+    }
+
+    public function category(){
+        return $this->belongsTo('App\Category');
     }
 }

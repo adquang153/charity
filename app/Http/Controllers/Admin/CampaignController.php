@@ -5,9 +5,16 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Helpers\Handler;
+use App\Services\CampaignService;
 
 class CampaignController extends Controller
 {
+
+    protected $campaign;
+
+    public function __construct(CampaignService $campaign){
+        $this->campaign = $campaign;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +23,8 @@ class CampaignController extends Controller
     public function index()
     {
         //
-        return view('admin.campaign.index');
+        $data = $this->campaign->getAllCampaigns();
+        return view('admin.campaign.index', compact('data'));
     }
 
     /**
@@ -60,6 +68,10 @@ class CampaignController extends Controller
     public function edit($id)
     {
         //
+        $campaign = $this->campaign->findCampaign($id, 'admin');
+        if($campaign) 
+            return view('admin.campaign.edit',compact('campaign'));
+        abort(404);
     }
 
     /**
@@ -83,5 +95,17 @@ class CampaignController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function deletes(Request $request){
+        return json_encode($this->campaign->deletes($request->ids));
+    }
+
+    public function changeStatus($id){
+        $data = $this->campaign->changeStatus($id);
+        if($data){
+            return redirect()->route('admin.campaign.index')->with('success','Campaign Updated!');
+        }
+        return redirect()->route('admin.campaign.index')->with('error','Failed to update!');
     }
 }

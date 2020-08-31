@@ -84,7 +84,7 @@ class UserController extends Controller
     {
         //
         // $result = $this->user->updateProfileUser($id, $request->all());
-
+        
     }
 
     /**

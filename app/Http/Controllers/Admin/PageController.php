@@ -4,10 +4,16 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Services\CategoryService;
 
 class PageController extends Controller
 {
     //
+    protected $category;
+    public function __construct(CategoryService $category){
+        $this->category = $category;
+    }
+
     public function donate(){
         return view('admin.pages.donate');
     }
@@ -17,6 +23,7 @@ class PageController extends Controller
     }
 
     public function category(){
-        return view('admin.pages.category');
+        $categories = $this->category->getCategories();
+        return view('admin.pages.category', compact('categories'));
     }
 }
