@@ -41,6 +41,15 @@ The above copyright notice and this permission notice shall be included in all c
       @include('admin.layouts.header')
       <!-- End Navbar -->
       <div class="content container-fluid">
+        @if ($errors->any())
+          <div class="alert alert-danger">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div>
+        @endif
         @yield('content')
       </div>
       @include('admin.layouts.footer')

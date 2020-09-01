@@ -24,16 +24,27 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Controller Admin
 Route::prefix('/admin')->middleware(['auth','is_admin'])->name('admin.')->namespace('Admin')->group(function(){
     Route::get('/', 'HomeController@index')->name('index');
+
+    //user
     Route::post('/user/delete-users', 'UserController@deleteUsers')->name('user.delete-users');
     Route::resource('/user', 'UserController');
     Route::resource('/post', 'PostController');
+
+    // campaign
     Route::resource('/campaign', 'CampaignController');
     Route::post('/campaign/delete', 'CampaignController@deletes')->name('campaign.delete');
     Route::get('/campaign/change-status/{id}', 'CampaignController@changeStatus')->name('campaign.change-status');
+
+    //difficult
     Route::resource('/difficult', 'DifficultSituationController');
+
+    //category
+    Route::resource('/category', 'CategoryController');
+    Route::post('/category/delete', 'CategoryController@deletes')->name('category.delete');
+
+    //page
     Route::get('/donate', 'PageController@donate')->name('donate');
     Route::get('/comment', 'PageController@comment')->name('comment');
-    Route::get('/category', 'PageController@category')->name('category');
 });
 
 Auth::routes();

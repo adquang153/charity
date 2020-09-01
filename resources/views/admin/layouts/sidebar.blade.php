@@ -52,7 +52,7 @@
                 </a>
             </li>
             <li class="nav-item " data-active="category">
-                <a class="nav-link" href="{{route('admin.category')}}">
+                <a class="nav-link" href="{{route('admin.category.index')}}">
                     <i class="material-icons">local_offer</i>
                     <p>Categories</p>
                 </a>
