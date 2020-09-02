@@ -19,10 +19,7 @@
                     <div class="col-lg-10">
                         <div class="media">
                             <div class="media-body">
-                                <h1 class="mt-0 font-weight-normal">The Kapusta</h1>
-                                <p class="mb-1 text-secondary">The Kapusta là dự án thành lập bởi tập thể học sinh khối
-                                    Nga trường THPT Hà Nội- Amsterdam nhằm gây quỹ từ thiện giúp đỡ cho học sinh nghèo
-                                    trên các phương diện sinh hoạt, học tập, di chuyển.</p>
+                                <h1 class="mt-0 font-weight-normal">{{$post->name}}</h1>
                             </div>
                         </div>
                     </div>
@@ -37,180 +34,17 @@
                     <article>
                         <div class="row">
                             <div class="col-lg-8">
+                                @if($post->image)
                                 <div class="embed-responsive embed-responsive-16by9 campaign-style1 no-shadow mb-3 mb-md-0">
                                     <img class="embed-responsive-item"
-                                        src="https://kindmate.net/Uploads/2020/08/03/5f27e8f3312be-dsc-4531-jpg"> </div>
-                                <div class="row mt-4">
-                                    <div class="campaign-content mt-2 pt-1 border-top">
+                                        src="{{asset($post->image)}}"> 
+                                </div>
+                                @endif
+                                <div class="row {{$post->image ? 'mt-3' : '' }}">
+                                    <div class="campaign-content">
                                         <div id="campaign-content">
-                                            <article class="fck_detail ">
-                                                <p class="Normal">Trong kháng nghị vừa ban hành, VKSND TP HCM cho rằng, mức
-                                                    án TAND TP HCM áp dụng đối với ông Trầm Bê (61 tuổi, nguyên Phó chủ tịch
-                                                    Ngân hàng Phương Nam - đã sáp nhập Sacombank) và đồng phạm về tội <em>Vi
-                                                        phạm quy định về cho vay trong hoạt động của các tổ chức tín dụng
-                                                    </em>chưa tương xứng với mức độ phạm tội.</p>
-                                                <p class="Normal">Tại phiên xử sơ thẩm, mức án VKS đề nghị đối với ông Trầm
-                                                    Bê là 6-7 năm tù, nhưng <a
-                                                        href="https://vnexpress.net/ong-tram-be-linh-them-3-nam-tu-4138589.html"
-                                                        rel="dofollow">toà chỉ tuyên phạt 3 năm</a>. Tương tự, các bị cáo
-                                                    còn lại toà cũng áp dụng hình phạt chưa bằng một nửa mức án VKS đề nghị.
-                                                </p>
-                                                <figure data-size="true" itemprop="associatedMedia image" itemscope=""
-                                                    itemtype="http://schema.org/ImageObject"
-                                                    class="tplCaption action_thumb_added">
-                                                    <div class="action_thumb flexbox"
-                                                        style="z-index: 9; transform-origin: 0px 0px; opacity: 1; transform: scale(1, 1); display: none;">
-                                                        <a href="javascript:;" class="share_photo" data-type="fb"
-                                                            data-reference-id="5"><svg class="ic ic-facebook">
-                                                                <use xlink:href="#Facebook"></use>
-                                                            </svg></a>
-                                                        <a href="javascript:;" class="share_photo" data-type="tw"
-                                                            data-reference-id="5"><svg class="ic ic-twitte">
-                                                                <use xlink:href="#Twitter"></use>
-                                                            </svg></a>
-                                                        <a href="javascript:;" class="vne_zoom"
-                                                            style="transform-origin: 0px 0px; opacity: 1; transform: scale(1, 1);"><svg
-                                                                class="ic ic-zoom">
-                                                                <use xlink:href="#Zoom"></use>
-                                                            </svg></a>
-                                                    </div>
-                                                    <meta itemprop="url"
-                                                        content="https://i1-vnexpress.vnecdn.net/2020/08/13/khang-nghi-tram-be-3755-1597311514.jpg?w=0&amp;h=0&amp;q=100&amp;dpr=2&amp;fit=crop&amp;s=I1r8yhMWKQWdKAwRERy03A">
-                                                    <meta itemprop="width" content="680">
-                                                    <meta itemprop="height" content="462">
-                                                    <meta itemprop="href" content="">
-                                                    <div class="fig-picture"
-                                                        style="padding-bottom: 67.941176470588%;position: relative;">
-                                                        <picture>
-                                                            <!--[if IE 9]><video style="display: none;"><![endif]-->
-                                                            <source
-                                                                data-srcset="https://i1-vnexpress.vnecdn.net/2020/08/13/khang-nghi-tram-be-3755-1597311514.jpg?w=680&amp;h=0&amp;q=100&amp;dpr=1&amp;fit=crop&amp;s=7nzxnVbvirqozp53Nwi_MA 1x, https://i1-vnexpress.vnecdn.net/2020/08/13/khang-nghi-tram-be-3755-1597311514.jpg?w=1020&amp;h=0&amp;q=100&amp;dpr=1&amp;fit=crop&amp;s=BsZS27JCdC-rBwXtG8N9Mg 1.5x, https://i1-vnexpress.vnecdn.net/2020/08/13/khang-nghi-tram-be-3755-1597311514.jpg?w=680&amp;h=0&amp;q=100&amp;dpr=2&amp;fit=crop&amp;s=IQGh9PD0Quyjn7i3zt-blg 2x"
-                                                                srcset="https://i1-vnexpress.vnecdn.net/2020/08/13/khang-nghi-tram-be-3755-1597311514.jpg?w=680&amp;h=0&amp;q=100&amp;dpr=1&amp;fit=crop&amp;s=7nzxnVbvirqozp53Nwi_MA 1x, https://i1-vnexpress.vnecdn.net/2020/08/13/khang-nghi-tram-be-3755-1597311514.jpg?w=1020&amp;h=0&amp;q=100&amp;dpr=1&amp;fit=crop&amp;s=BsZS27JCdC-rBwXtG8N9Mg 1.5x, https://i1-vnexpress.vnecdn.net/2020/08/13/khang-nghi-tram-be-3755-1597311514.jpg?w=680&amp;h=0&amp;q=100&amp;dpr=2&amp;fit=crop&amp;s=IQGh9PD0Quyjn7i3zt-blg 2x">
-                                                            <!--[if IE 9]></video><![endif]-->
-                                                            <img itemprop="contentUrl"
-                                                                style="position: absolute;width:100%;left:0;" loading="lazy"
-                                                                intrinsicsize="680x0"
-                                                                alt="Ông Trầm Bê bị VKSND TP HCM đề nghị tăng hình phạt. Ảnh: Thành Nguyễn."
-                                                                class="lazy lazied"
-                                                                src="https://i1-vnexpress.vnecdn.net/2020/08/13/khang-nghi-tram-be-3755-1597311514.jpg?w=680&amp;h=0&amp;q=100&amp;dpr=1&amp;fit=crop&amp;s=7nzxnVbvirqozp53Nwi_MA"
-                                                                data-src="https://i1-vnexpress.vnecdn.net/2020/08/13/khang-nghi-tram-be-3755-1597311514.jpg?w=680&amp;h=0&amp;q=100&amp;dpr=1&amp;fit=crop&amp;s=7nzxnVbvirqozp53Nwi_MA"
-                                                                data-ll-status="loaded">
-                                                        </picture>
-                                                    </div>
-                                                    <figcaption itemprop="description">
-                                                        <p class="Image">Ông Trầm Bê tại phiên toà năm 2018. Ảnh: <em>Thành
-                                                                Nguyễn.</em></p>
-                                                    </figcaption>
-                                                </figure>
-                                                <p class="Normal">Về trách nhiệm dân sự, VKS đề nghị tòa phúc thẩm buộc ông
-                                                    Bê và các cựu cán bộ Ngân hàng Phương Nam phải liên đới cùng bị cáo
-                                                    Dương Thanh Cường (cựu tổng giám đốc Công ty Bình Phát, Chủ tịch HĐQT
-                                                    Công ty Thanh Phát) bồi thường thiệt hại 505 tỷ đồng cho ngân hàng.</p>
-                                                <p class="Normal">Viện dẫn Điều 48 BLHS và Điều 587 BLDS quy định về trách
-                                                    nhiệm bồi thường thiệt hại trong trường hợp nhiều người gây ra, VKS cho
-                                                    rằng các bị cáo phải bồi thường tương ứng với mức độ lỗi của mình. Nếu
-                                                    không xác định được mức độ lỗi, họ phải bồi thường theo phần bằng nhau.
-                                                </p>
-                                                <p class="Normal">Theo đó, trong 505 tỷ đồng thiệt hại, Cường phải bồi
-                                                    thường hơn 185 tỷ; số còn lại Cường, Trầm Bê cùng đồng phạm phải liên
-                                                    đới bồi thường - như đề nghị trước đó của VKS tại phiên sơ thẩm. Tuy
-                                                    nhiên, TAND TP HCM chỉ buộc một mình Cường chịu trách nhiệm toàn bộ
-                                                    thiệt hại vụ án.</p>
-                                                <p class="Normal"><strong>Theo bản án sơ thẩm,</strong> năm 2008, Cường biết
-                                                    rõ 23 sổ đỏ (10,3 ha đất nông nghiệp tại Bình Chánh) không thể sang tên
-                                                    cho công ty của mình nhưng vẫn mang đến Agribank thế chấp vay 171 tỷ
-                                                    đồng. Ông ta sau đó lấy lý do hoàn thiện thủ tục cho khu đất mượn lại 23
-                                                    sổ đỏ này mang sang Ngân hàng Phương Nam làm hồ sơ thế chấp vay tiền rồi
-                                                    chiếm đoạt tiền.</p>
-                                                <p class="Normal">Ông Trầm Bê và loạt cán bộ cấp dưới đã không thẩm định hồ
-                                                    sơ, bỏ qua các quy định, ký nhiều hợp đồng giải ngân tiền và vàng cho
-                                                    công ty của Cường vay dù 23 sổ đó này không có giá trị thế chấp, khiến
-                                                    Ngân hàng Phương Nam không thu hồi được nợ. Hiện, khoản nợ của Cường tại
-                                                    Sacombank là 505 tỷ đồng (185 tỷ đồng tiền gốc cộng lãi phát sinh).</p>
-                                                <p class="Normal">Hôm 30/7, sau một tuần xét xử, toà tuyên phạt Dương Thanh
-                                                    Cường 16 năm tù về tội <em>Lừa đảo chiếm đoạt tài sản</em>. Tổng hợp với
-                                                    hình phạt tù chung thân trước đó, bị cáo phải chấp hành hình phạt chung
-                                                    là chung thân.</p>
-                                                <p class="Normal">Ông Trầm Bê bị tuyên 3 năm tù, tổng hợp hình phạt <a
-                                                        href="https://vnexpress.net/ong-tram-be-pham-cong-danh-lan-luot-linh-4-va-20-nam-tu-3788066.html"
-                                                        rel="dofollow">4 năm tù</a> trước đó (giúp sức <a
-                                                        href="https://vnexpress.net/topic/dai-an-that-thoat-16-000-ty-dong-21296#ctr=box_topic_phapluat_env_4_click"
-                                                        rel="dofollow">Phạm Công Danh</a> gây thiệt hại cho VNCB khoảng
-                                                    1.800 tỷ đồng), bị cáo phải chấp hành chung 7 năm tù.</p>
-                                                <p class="Normal">Phan Huy Khang bị phạt 2 năm 6 tháng tù; các bị cáo khác
-                                                    nhận 1 năm 3 tháng tù đến 2 năm tù giam, riêng Trầm Viết Trung lĩnh 1
-                                                    năm tù treo.</p>
-                                                <p class="Normal">Lý do được tòa đưa ra khi áp dụng mức hình phạt thấp hơn
-                                                    so với đề nghị của VKS là do hậu quả của vụ án "cơ bản đã được khắc
-                                                    phục".</p>
-                                                <ul class="list-news  gaBoxLinkDisplay" data-campaign="Box-Related"
-                                                    data-event-category="Article Link Display"
-                                                    data-event-action="Box-Related" data-event-label="Item-0">
-                                                    <li data-id="4138589"><a data-medium="Item-1"
-                                                            href="https://vnexpress.net/ong-tram-be-linh-them-3-nam-tu-4138589.html"
-                                                            title="Ông Trầm Bê lĩnh thêm 3 năm tù"
-                                                            data-event-category="Article Link Click"
-                                                            data-event-action="Box-Related" data-event-label="1"
-                                                            data-itm-source="#vn_source=Detail&amp;vn_campaign=Box-Related&amp;vn_medium=Item-1&amp;vn_term=Desktop"
-                                                            data-itm-added="1">Ông Trầm Bê lĩnh thêm 3 năm tù</a><span
-                                                            class="meta-news">
-                                                            <a class="count_cmt"
-                                                                href="https://vnexpress.net/ong-tram-be-linh-them-3-nam-tu-4138589.html#box_comment_vne"
-                                                                style="white-space: nowrap; display: none;"
-                                                                data-event-category="Article Link Click"
-                                                                data-event-action="Box-Related" data-event-label="1"
-                                                                data-itm-source="#vn_source=Detail&amp;vn_campaign=Box-Related&amp;vn_medium=Item-1&amp;vn_term=Desktop"
-                                                                data-itm-added="1">
-                                                                <svg class="ic ic-comment">
-                                                                    <use xlink:href="#Comment-Reg"></use>
-                                                                </svg>
-                                                                <span class="font_icon widget-comment-4138589-1"></span>
-                                                            </a>
-                                                        </span></li>
-                                                    <li data-id="4138069"><a data-medium="Item-2"
-                                                            href="https://vnexpress.net/ong-tram-be-nhieu-nguoi-muon-di-tu-thay-toi-4138069.html"
-                                                            title="Ông Trầm Bê: 'Nhiều người muốn đi tù thay tôi'"
-                                                            data-event-category="Article Link Click"
-                                                            data-event-action="Box-Related" data-event-label="2"
-                                                            data-itm-source="#vn_source=Detail&amp;vn_campaign=Box-Related&amp;vn_medium=Item-2&amp;vn_term=Desktop"
-                                                            data-itm-added="1">Ông Trầm Bê: 'Nhiều người muốn đi tù thay
-                                                            tôi'</a><span class="meta-news">
-                                                            <a class="count_cmt"
-                                                                href="https://vnexpress.net/ong-tram-be-nhieu-nguoi-muon-di-tu-thay-toi-4138069.html#box_comment_vne"
-                                                                style="white-space: nowrap; display: none;"
-                                                                data-event-category="Article Link Click"
-                                                                data-event-action="Box-Related" data-event-label="2"
-                                                                data-itm-source="#vn_source=Detail&amp;vn_campaign=Box-Related&amp;vn_medium=Item-2&amp;vn_term=Desktop"
-                                                                data-itm-added="1">
-                                                                <svg class="ic ic-comment">
-                                                                    <use xlink:href="#Comment-Reg"></use>
-                                                                </svg>
-                                                                <span class="font_icon widget-comment-4138069-1">1</span>
-                                                            </a>
-                                                        </span></li>
-                                                    <li data-id="4137344"><a data-medium="Item-3"
-                                                            href="https://vnexpress.net/ong-tram-be-bi-de-nghi-6-7-nam-tu-4137344.html"
-                                                            title="Ông Trầm Bê bị đề nghị 6-7 năm tù"
-                                                            data-event-category="Article Link Click"
-                                                            data-event-action="Box-Related" data-event-label="3"
-                                                            data-itm-source="#vn_source=Detail&amp;vn_campaign=Box-Related&amp;vn_medium=Item-3&amp;vn_term=Desktop"
-                                                            data-itm-added="1">Ông Trầm Bê bị đề nghị 6-7 năm tù</a><span
-                                                            class="meta-news">
-                                                            <a class="count_cmt"
-                                                                href="https://vnexpress.net/ong-tram-be-bi-de-nghi-6-7-nam-tu-4137344.html#box_comment_vne"
-                                                                style="white-space: nowrap; display: inline-block;"
-                                                                data-event-category="Article Link Click"
-                                                                data-event-action="Box-Related" data-event-label="3"
-                                                                data-itm-source="#vn_source=Detail&amp;vn_campaign=Box-Related&amp;vn_medium=Item-3&amp;vn_term=Desktop"
-                                                                data-itm-added="1">
-                                                                <svg class="ic ic-comment">
-                                                                    <use xlink:href="#Comment-Reg"></use>
-                                                                </svg>
-                                                                <span class="font_icon widget-comment-4137344-1">17</span>
-                                                            </a>
-                                                        </span></li>
-                                                </ul>
-                                                <p class="Normal" style="text-align:right;"><strong>Hải Duyên</strong></p>
+                                            <article class="fck_detail">
+                                                {!! $post->content !!}
                                             </article>
                                         </div>
 

@@ -230,3 +230,9 @@ img.embed-responsive-item {
 .logo{
     width: 10%;
 }
+.text-sm{
+    font-size: 12px;
+}
+.min-w-0{
+    min-width: initial;
+}

@@ -30,6 +30,9 @@
                     @endif
                 @else
                     <li class="nav-item">
+                        <a class="nav-link font-weight-bold text-primary" href="{{ route('view.articles.create') }}">{{ __('Tạo tin tức') }}</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link font-weight-bold text-primary" href="{{ route('view.campaign.create') }}">{{ __('Tạo chiến dịch') }}</a>
                     </li>
                     <li class="nav-item dropdown">

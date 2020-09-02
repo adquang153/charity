@@ -50,6 +50,7 @@
     {{-- <script src="{{ asset('js/jquery.slim.min.js') }}"></script>
     --}}
     <script src="{{ asset('js/progresscircle.js') }}"></script>
+    <script src="{{asset('js/sweetalert2.js')}}"></script>
     <script type="text/javascript">
         function makesvg(percentage, inner_text = "") {
 

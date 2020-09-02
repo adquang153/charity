@@ -41,7 +41,6 @@ class UserService{
     public function deleteUsers($arr){
         return User::whereIn('id', $arr)->delete();
     }
-
 }
 
 ?>

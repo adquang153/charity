@@ -48,6 +48,11 @@ class CampaignService{
         return false;
     }
     
+    public function getListByUser($id){
+        $list = Campaign::where('user_id', $id)->where('status', 1)->orderBy('created_at','asc')->paginate(15);
+        return $list;
+    }
+
 }
 
 ?>

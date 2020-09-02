@@ -17,7 +17,7 @@ class CreateTablePost extends Migration
             $table->id();
             $table->string('name', 255);
             $table->longText('content');
-            // $table->string('image')->nullable();
+            $table->string('image')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('view_total')->default(0)->nullable();
             $table->timestamps();
