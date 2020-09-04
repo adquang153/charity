@@ -30,18 +30,38 @@ class CampaignController extends Controller
     public function storeCampaign(CampaignRequest $request){
         $result = $this->campaign->createCampaign($request->all());
         if($result)
-            return redirect()->route('view.campaign.detail', $result->id)->with('success', 'Created Campaign!');
+            return redirect()->route('view.explore')->with('success', 'Đã tạo chiến dịch, đang chờ admin phê duyệt!');
         return redirect()->back()->with('error','Cannot Create Campaign!');
     }
 
     public function detail($id){
         $data = $this->campaign->findCampaign($id);
         if(!$data)
-            abort(404);
+            return redirect()->back()->with('error','Chiến dịch không tồn tại hoặc đang chờ admin phê duyệt!');
         return view('view.campaign.detail', compact('data'));
     }
     public function explore(){
         return view('view.campaign.index');
+    }
+
+    public function edit($id){
+        $campaign = $this->campaign->findCampaign($id, "admin");
+        $listCate = $this->category->getAllCategory();
+        $data = [
+            'campaign' => $campaign,
+            'listCate' => $listCate
+        ];
+        return view('view.campaign.edit', $data);
+    }
+
+    public function update($id, CampaignRequest $request){
+        $result = $this->campaign->updateCampaign($id, $request->all());
+        if($result){
+            if($result->status === 0)
+                return redirect()->route('view.profile-campaign', Auth()->user()->id)->with('success', 'Đã sửa chiến dịch, đang chờ admin phê duyệt!');
+            return redirect()->route('view.campaign.detail', $result->id)->with('success', 'Sửa chiến dịch thành công!');
+        }
+        return redirect()->back()->with('error', 'Sửa chiến dịch không thành công!');
     }
 
 }

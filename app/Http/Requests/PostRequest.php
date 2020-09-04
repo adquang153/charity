@@ -23,11 +23,14 @@ class PostRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             'name' => 'required|string|min:10|max:125',
             'content' => 'required|string',
             'user_id' => 'required|numeric',
-            'image' => 'required'
         ];
+        if(!$this->id){
+            $rules['images'] = 'required';  
+        }
+        return $rules;
     }
 }

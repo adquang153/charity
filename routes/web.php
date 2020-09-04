@@ -60,12 +60,16 @@ Route::namespace('View')->name('view.')->group(function(){
     Route::get('campaign/detail/{id}', 'CampaignController@detail')->name('campaign.detail');
     Route::get('/campaign/create', 'CampaignController@createCampaign')->name('campaign.create')->middleware('auth');
     Route::post('/campaign/store', 'CampaignController@storeCampaign')->name('campaign.store')->middleware('auth');
+    Route::get('/campaign/edit/{id}', 'CampaignController@edit')->name('campaign.edit')->middleware('auth');
+    Route::post('/campaign/update/{id}', 'CampaignController@update')->name('campaign.update')->middleware('auth');
 
     //post
     Route::get('/articles', 'ArticleController@articles')->name('articles');
     Route::get('/articles/create', 'ArticleController@create')->name('articles.create');
     Route::post('/articles/store', 'ArticleController@store')->name('articles.store');
     Route::get('/articles/detail/{id}', 'ArticleController@detailArticles')->name('articles.detail');
+    Route::get('/articles/edit/{id}', 'ArticleController@edit')->name('articles.edit');
+    Route::post('/articles/update/{id}', 'ArticleController@update')->name('articles.update');
 
     Route::get('/loginfe', 'HomeController@login')->name('loginfe');
 

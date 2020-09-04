@@ -47,7 +47,7 @@
                                 </a>
                                 <div class="dropdown-menu text-center min-w-0">
                                     <a class="dropdown-item px-2" href="{{route('view.articles.detail', $item->id)}}">Xem</a>
-                                    <a class="dropdown-item" href="#">Sửa</a>
+                                    <a class="dropdown-item" href="{{route('view.articles.edit', $item->id)}}">Sửa</a>
                                     <a class="dropdown-item del-item" href="javascript:void(0);" data-form="#form-{{$item->id}}">Xóa</a>
                                     <form action="{{route('view.delete-articles', $item->id)}}" id="form-{{$item->id}}" method="POST">
                                         @csrf

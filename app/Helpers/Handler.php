@@ -13,7 +13,9 @@ class Handler{
     }
 
     public static function deleteFile($images){
-        Storage::delete($images);
+        if(file_exists($images))
+            return unlink($images);
+        return false;
     }
 }
 

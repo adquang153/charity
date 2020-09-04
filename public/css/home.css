@@ -250,7 +250,7 @@ header.header {
     background: #fff;
 }
 main.main{
-    padding: 65px 0;
+    padding: 100px 0 65px;
 }
 /* footer */
 .footer a {

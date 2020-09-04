@@ -32,7 +32,7 @@
         @include('view.layouts.header')
 
         @if( session()->get('success') || session()->get('error') )
-            <div class="alert alert-{{ session()->get('success') ? 'primary' : 'danger' }} alert-global" role="alert" style="position:fixed;top: 65px; right: 60px;">
+            <div class="alert alert-{{ session()->get('success') ? 'primary' : 'danger' }} alert-global" role="alert" style="position:fixed;top: 85px; right: 60px; z-index: 9">
                 {{ session()->get('success') ?? session()->get('error') }}
                 <a href="javascript:document.querySelector('.alert-global').remove()" class="ml-2"><i class="fa fa-times" aria-hidden="true"></i></a>
             </div>
@@ -98,7 +98,7 @@
         $(function(){
             setTimeout(() => {
                 $('.alert-global').fadeOut(1000);
-            }, 3000);
+            }, 8000);
         })
     </script>
     @yield('scripts')

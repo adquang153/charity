@@ -8,7 +8,7 @@
     <main class="main createCampaign">
         <section class="my-2 container">
             <h1 class="mb-4">Tạo Tin tức</h1>
-            <form method="POST" action="{{route('view.articles.store')}}" accept-charset="UTF-8" id="campaign-form"
+            <form method="POST" action="{{route('view.articles.update', $post->id)}}" accept-charset="UTF-8" id="campaign-form"
                 enctype="multipart/form-data">
                 @csrf
                 @if ($errors->any())
@@ -20,16 +20,17 @@
                         </ul>
                     </div>
                 @endif
+                <input type="hidden" name="id" value="{{$post->id}}">
                 <input type="hidden" name="user_id" value="{{Auth()->user()->id}}">
                 <div class="row">
                     <div class="col-md-8 order-2 order-md-1">
                         <div class="form-group">
                             <h5>Tiêu đề*</h5>
-                            <input type="text" name="name" class="form-control" placeholder="Tiêu đề" required>
+                            <input type="text" name="name" class="form-control" value="{{$post->name}}" placeholder="Tiêu đề" required>
                         </div>
                         <div class="form-group">
                             <h5>Nội dung*</h5>
-                            <textarea name="content" id="editor1" required>{!! old('content') !!}</textarea>
+                            <textarea name="content" id="editor1" required>{!! $post->content !!}</textarea>
                         </div>
                         <div class="d-flex justify-content-between mt-4">
                             <button type="button" class="btn btn-danger" onclick="window.history.back();">Hủy bỏ</button>
@@ -47,7 +48,7 @@
                                 <label for="campaign-cover">
                                     <i class="fas fa-camera" style="font-size: 30px"></i>
                                     <div>Ảnh đại diện <br></div>
-                                </label> <input accept="image/*" hidden="" id="campaign-cover" name="image" type="file">
+                                </label> <input accept="" hidden="" id="campaign-cover" name="image" type="file">
                             </div>
                         </div>
                     </div>
@@ -62,6 +63,9 @@
     <script>
         $(function() {
             CKEDITOR.replace('editor1');
+            @if($post && $post->image)
+                $('.image-file-com').css({'background' : "url({{asset($post->image)}}) no-repeat center center", 'background-size':'cover'});
+            @endif
             var readURL = function(input) {
                 if (input.files && input.files[0]) {
                     var reader = new FileReader();

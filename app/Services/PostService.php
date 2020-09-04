@@ -26,6 +26,16 @@ class PostService{
         }
         return Post::select('id')->find($ids)->delete();
     }
+
+    public function update($id, $data){
+        $post = Post::find($id);
+        if( isset($data['image']) && $post->image != $data['image']){
+            Handler::deleteFile($post->image);
+            $data['image'] = Handler::uploadFile($data['image'], 'post');
+        }
+        return $post->update($data);
+    }
+
 }
 
 ?>

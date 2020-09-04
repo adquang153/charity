@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Campaign;
 use App\Helpers\Handler;
+use Storage;
 
 class CampaignService{
 
@@ -49,8 +50,26 @@ class CampaignService{
     }
     
     public function getListByUser($id){
-        $list = Campaign::where('user_id', $id)->where('status', 1)->orderBy('created_at','asc')->paginate(15);
+        $list = Campaign::where('user_id', $id)->orderBy('created_at','asc')->paginate(15);
         return $list;
+    }
+
+    public function updateCampaign($id, $data){
+        $campaign = Campaign::find($id);
+        if(isset($data['images'])){
+            Handler::deleteFile($campaign->images);
+            $data['images'] = Handler::uploadFile($data['images'], 'campaign');
+        }
+        $campaign->name = $data['name'];
+        $campaign->content = $data['content'];
+        $campaign->description = $data['description'];
+        $campaign->images = $data['images'];
+        $campaign->date_end = $data['date_end'];
+        $campaign->amount = $data['amount']??$campaign->amount;
+        $campaign->category_id = $data['category_id'];
+        $campaign->video = $data['video'];
+        $campaign->save();
+        return $campaign;
     }
 
 }
