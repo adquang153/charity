@@ -93,7 +93,7 @@
     <div class="col-md-4">
         <div class="card card-profile pt-5 px-5 pb-3">
             <a href="javascript:void(0);">
-                <img class="w-100"  src="{{asset($campaign->images)}}" />
+                <img class="w-100"  src="{{asset($campaign->images ?? 'images/no-img.jpg')}}" />
             </a>
             <h4 class="pt-3 mb-0">Avatar</h4>
         </div>

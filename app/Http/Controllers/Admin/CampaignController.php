@@ -23,7 +23,10 @@ class CampaignController extends Controller
     public function index()
     {
         //
-        $data = $this->campaign->getAllCampaigns();
+        $params = [
+            'paginate' => 15,
+        ];
+        $data = $this->campaign->getAllCampaigns($params);
         return view('admin.campaign.index', compact('data'));
     }
 

@@ -31,6 +31,7 @@ Route::prefix('/admin')->middleware(['auth','is_admin'])->name('admin.')->namesp
 
     //post
     Route::resource('/post', 'PostController');
+    Route::post('/post/delete', 'PostController@deletes')->name('post.delete');
 
     // campaign
     Route::resource('/campaign', 'CampaignController');
@@ -43,7 +44,7 @@ Route::prefix('/admin')->middleware(['auth','is_admin'])->name('admin.')->namesp
     //category
     Route::resource('/category', 'CategoryController');
     Route::post('/category/delete', 'CategoryController@deletes')->name('category.delete');
-
+    
     //page
     Route::get('/donate', 'PageController@donate')->name('donate');
     Route::get('/comment', 'PageController@comment')->name('comment');

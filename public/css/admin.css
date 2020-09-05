@@ -7,6 +7,8 @@
     width: 50px;
     height: 50px;
     border-radius: 4px;
+    object-fit: cover;
+    object-position: center center;
 }
 select.form-control{
     padding: 0 8px;

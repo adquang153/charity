@@ -22,9 +22,15 @@ class PostService{
 
     public function deletes($ids){
         if(gettype($ids) === 'array'){
-            return Post::select('id')->whereIn('id', $ids)->delete();
+            $listPost = Post::select('id', 'image')->whereIn('id', $ids);
+            foreach($listPost->get() as $post){
+                Handler::deleteFile($post->image);
+            }
+            return $listPost->delete();
         }
-        return Post::select('id')->find($ids)->delete();
+        $post = Post::select('id','image')->find($ids);
+        Handler::deleteFile($post->image);
+        return $post->delete();
     }
 
     public function update($id, $data){
@@ -35,7 +41,28 @@ class PostService{
         }
         return $post->update($data);
     }
+    public function getAllPosts($params){
+        $select = '*';
+        if(isset($params['select']))
+            $select = $params['select'];
+        $data = Post::with('user')->select($select)->orderBy('created_at','asc');
 
+        if(isset($params['where']))
+            $data = $data->where($params['where']);
+
+        if(isset($params['search']) && trim($params['search']) != "")
+            $data = $data->where('name', 'like', '%'.$params['search'].'%');
+
+        if(isset($params['paginate'])){
+            $data = $data->paginate($params['paginate']);
+            if( isset( $params['search']) && trim($params['search']) != "" ){
+                $data = $data->appends(['search' => $params['search']]);
+            }
+        }
+        else
+            $data = $data->get();
+        return $data;
+    }
 }
 
 ?>

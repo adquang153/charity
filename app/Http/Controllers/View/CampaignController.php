@@ -40,8 +40,17 @@ class CampaignController extends Controller
             return redirect()->back()->with('error','Chiến dịch không tồn tại hoặc đang chờ admin phê duyệt!');
         return view('view.campaign.detail', compact('data'));
     }
-    public function explore(){
-        return view('view.campaign.index');
+    public function explore(Request $request){
+        $params = [
+            'where' => [
+                            ['status', 1],
+                            ['date_end', '>=', Date('Y-m-d')]
+                        ],
+            'paginate' => 12,
+            'search' => $request->search
+        ];
+        $data = $this->campaign->getAllCampaigns($params);
+        return view('view.campaign.index', compact('data'));
     }
 
     public function edit($id){

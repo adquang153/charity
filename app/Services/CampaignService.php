@@ -27,16 +27,41 @@ class CampaignService{
         return $data;
     }
 
-    public function getAllCampaigns(){
-        $data = Campaign::paginate(15);
+    public function getAllCampaigns($params){
+        $select = '*';
+        // if params select empty then select query select *
+        if(isset($params['select']))
+            $select = $params['select'];
+        $data = Campaign::with('user')->select($select)->orderBy('created_at','asc');
+
+        if(isset($params['where']))
+            $data = $data->where($params['where']);
+
+        if(isset($params['search']) && trim($params['search']) != "")
+            $data = $data->where('name', 'like', '%'.$params['search'].'%');
+            
+        if(isset($params['paginate'])){
+            $data = $data->paginate($params['paginate']);
+            if( isset( $params['search']) && trim($params['search']) != "" ){
+                $data = $data->appends(['search' => $params['search']]);
+            }
+        }
+        else
+            $data = $data->get();
         return $data;
     }
 
     public function deletes($ids){
         if(gettype($ids) === 'array'){
-            return Campaign::select('id')->whereIn('id', $ids)->delete();
+            $list = Campaign::select('id', 'images')->whereIn('id', $ids);
+            foreach($list->get() as $item){
+                Handler::deleteFile($item->images);
+            }
+            return $list->delete();
         }
-        return Campaign::select('id')->find($ids)->delete();
+        $campaign = Campaign::select('id', 'images')->find($ids);
+        Handler::deleteFile($campaign->images);
+        return $campaign->delete();
     }
 
     public function changeStatus($id){

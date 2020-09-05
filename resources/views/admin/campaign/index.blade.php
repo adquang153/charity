@@ -46,7 +46,7 @@
                         ?>
                         <td>{{$title}}</td>
                         <td>{{$content}}</td>
-                        <td>@if($item->image) <img src="{{asset($item->image)}}" class="img-table" alt="image"> @endif</td>
+                        <td><img src="{{asset($item->images ?? 'images/no-img.jpg')}}" class="img-table" alt="image"> </td>
                         <td>
                             <select name="status" class="form-control change-status" data-change="{{route('admin.campaign.change-status', $item->id)}}">
                                 <option value="1">Active</option>

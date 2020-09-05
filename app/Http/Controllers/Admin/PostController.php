@@ -4,9 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Services\PostService;
 
 class PostController extends Controller
 {
+    protected $post;
+
+    public function __construct(PostService $post){
+        $this->post = $post;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,8 +20,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
-        return view('admin.post.index');
+        $params = [
+            'paginate' => 15,
+        ];
+        $data = $this->post->getAllPosts($params);
+        return view('admin.post.index', compact('data'));
     }
 
     /**
@@ -48,6 +57,8 @@ class PostController extends Controller
     public function show($id)
     {
         //
+        $post = $this->post->findPost($id);
+        return view('admin.post.detail', compact('post'));
     }
 
     /**
@@ -82,5 +93,8 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function deletes(Request $request){
+        return json_encode($this->post->deletes($request->ids));
     }
 }

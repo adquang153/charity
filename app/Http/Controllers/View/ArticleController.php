@@ -15,8 +15,13 @@ class ArticleController extends Controller
     public function __construct(PostService $post){
         $this->post = $post;
     }
-    public function articles(){
-        return view('view.articles.index');
+    public function articles(Request $request){
+        $params = [
+            'paginate' => 12,
+            'search' => $request->search
+        ];
+        $data = $this->post->getAllPosts($params);
+        return view('view.articles.index', compact('data'));
     }
     public function detailArticles($id){
         $post = $this->post->findPost($id);
