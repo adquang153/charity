@@ -40,6 +40,7 @@ Route::prefix('/admin')->middleware(['auth','is_admin'])->name('admin.')->namesp
 
     //difficult
     Route::resource('/difficult', 'DifficultSituationController');
+    Route::post('/difficult/delete', 'DifficultSituationController@deletes')->name('difficult.delete');
 
     //category
     Route::resource('/category', 'CategoryController');

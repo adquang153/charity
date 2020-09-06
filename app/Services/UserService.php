@@ -8,9 +8,13 @@ use App\Helpers\Handler;
 
 class UserService{
 
-    public function listUser(){
-       $list = User::where('is_admin',USER::USER)->paginate(10);
-       return $list;
+    public function listUser($params=[]){
+        $list = User::where('is_admin',USER::USER);
+        if(isset($params['paginate']))
+            $list = $list->paginate($params['paginate']);
+        else
+            $list = $list->get();
+        return $list;
     }
     public function findUser($id, $type=""){
         if($type == "profile")

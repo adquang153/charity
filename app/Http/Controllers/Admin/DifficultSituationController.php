@@ -4,9 +4,17 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Services\DifficultService;
+use App\Http\Requests\DifficultRequest;
 
 class DifficultSituationController extends Controller
 {
+
+    protected $difficult;
+
+    public function __construct(DifficultService $difficult){
+        $this->difficult = $difficult;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,8 +22,11 @@ class DifficultSituationController extends Controller
      */
     public function index()
     {
-        //
-        return view('admin.difficult.index');
+        $params = [
+            'paginate' => 15,
+        ];
+        $data = $this->difficult->getAll();
+        return view('admin.difficult.index', compact('data'));
     }
 
     /**
@@ -26,6 +37,7 @@ class DifficultSituationController extends Controller
     public function create()
     {
         //
+        return view('admin.difficult.create');
     }
 
     /**
@@ -34,9 +46,13 @@ class DifficultSituationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DifficultRequest $request)
     {
         //
+        $result = $this->difficult->create($request->all());
+        if($result)
+            return redirect()->route('admin.difficult.index')->with('success','Tạo thành công!');
+        return redirect()->back()->with('error','Tạo không thành công!')->withInput();
     }
 
     /**
@@ -47,7 +63,7 @@ class DifficultSituationController extends Controller
      */
     public function show($id)
     {
-        //
+        //   
     }
 
     /**
@@ -58,7 +74,8 @@ class DifficultSituationController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = $this->difficult->find($id);
+        return view('admin.difficult.edit', compact('data'));     
     }
 
     /**
@@ -68,9 +85,13 @@ class DifficultSituationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DifficultRequest $request, $id)
     {
         //
+        $result = $this->difficult->update($id, $request->all());
+        if($result)
+            return redirect()->route('admin.difficult.index')->with('success','Cập nhật thành công!');
+        return redirect()->back()->with('error','Tạo nhật không thành công!')->withInput();
     }
 
     /**
@@ -82,5 +103,9 @@ class DifficultSituationController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function deletes(Request $request){
+        return json_encode($this->difficult->deletes($request->ids));
     }
 }

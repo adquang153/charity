@@ -9,43 +9,40 @@
                 <h4 class="card-title">Edit Profile</h4>
                 <!-- <p class="card-category">Complete your profile</p> -->
             </div>
-            <div class="card-body">
-                <form method="post" action="{{route('admin.user.update', $user->id)}}">
-                    @csrf
-                    @method('PATCH')
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label class="bmd-label-floating">Email address</label>
-                            <input type="email" value="{{$user->email}}" class="form-control" disabled>
+            <div class="card-body mt-3">
+                <div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="">Email address</label>
+                                <input type="email" value="{{$user->email}}" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="">Username</label>
+                                <input type="text" value="{{$user->name}}" class="form-control" disabled>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label class="bmd-label-floating">Username</label>
-                            <input type="text" value="{{$user->user_name}}" class="form-control">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="">Phone</label>
+                                <input type="text" value="{{$user->phone}}" class="form-control" disabled>
+                            </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="">Price total</label>
+                                <input type="number" value="{{$user->price_total}}" class="form-control" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label class="bmd-label-floating">Phone</label>
-                            <input type="text" value="{{$user->phone}}" class="form-control">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label class="bmd-label-floating">Price total</label>
-                            <input type="number" value="{{$user->price_total}}" class="form-control" disabled>
-                        </div>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
-                <div class="clearfix"></div>
-                </form>
             </div>
         </div>
     </div>
@@ -53,7 +50,7 @@
         <div class="card card-profile">
             <div class="card-avatar">
                 <a href="javascript:void(0);">
-                    <img class="img" src="{{asset($user->avatar)}}" />
+                    <img class="img" src="{{asset($user->avatar ?? 'images/user.png')}}" />
                 </a>
             </div>
         <div class="card-body">
@@ -63,7 +60,7 @@
             Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
             </p>
             <a href="javascript:;" class="btn btn-primary btn-round">Follow</a> -->
-            <a href="" class="btn btn-primary btn-round">Change Avatar</a>
+            <p>{{$user->name}}</p>
         </div>
     </div>
 </div>

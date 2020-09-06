@@ -13,9 +13,9 @@ use App\Http\Requests\CampaignRequest;
 class HomeController extends Controller
 {
     //
-    private $campaign;
-    private $category;
-    private $user;
+    protected $campaign;
+    protected $category;
+    protected $user;
 
     public function __construct(CampaignService $campaign, CategoryService $category,UserService $user){
         $this->campaign = $campaign;
@@ -23,7 +23,18 @@ class HomeController extends Controller
         $this->user = $user;
     }
     public function index(){
-        return view('view.home');
+        $params = [
+            'take' => 8,
+            'where' => [
+                ['status', 1],
+                ['date_end', '>=', Date('d-m-Y')]
+            ],
+        ];
+        $listCampaign = $this->campaign->getAllCampaigns($params);
+        $data = [
+            'listCampaign' => $listCampaign
+        ];
+        return view('view.home', $data);
     }
 
     public function about(){

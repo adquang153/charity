@@ -239,9 +239,9 @@
                                 <h3 class="mb-3">Bình luận</h3>
                                 <div class="k-comments">
                                     <div class="fb-comments fb_iframe_widget fb_iframe_widget_fluid_desktop"
-                                        data-href="https://kindmate.net/project/1404/trai-he-giao-duc-be-khoe-be-ngoan"
+                                        data-href="{{route('view.campaign.detail', $data->id)}}"
                                         data-numposts="10" data-width="100%" fb-xfbml-state="rendered"
-                                        fb-iframe-plugin-query="app_id=1407210996040164&amp;container_width=770&amp;height=100&amp;href=https%3A%2F%2Fkindmate.net%2Fproject%2F1404%2Ftrai-he-giao-duc-be-khoe-be-ngoan&amp;locale=en_US&amp;numposts=10&amp;sdk=joey&amp;version=v2.8&amp;width="
+                                        fb-iframe-plugin-query="app_id=337055250820503&amp;container_width=770&amp;height=100&amp;href=https%3A%2F%2Fkindmate.net%2Fproject%2F1404%2Ftrai-he-giao-duc-be-khoe-be-ngoan&amp;locale=en_US&amp;numposts=10&amp;sdk=joey&amp;version=v2.8&amp;width="
                                         style="width: 100%;">
                                         <span style="vertical-align: bottom; width: 100%; height: 178px;">
                                         <iframe src="https://www.facebook.com/plugins/comment_embed.php?href=https%3A%2F%2Fwww.facebook.com%2Fzuck%2Fposts%2F10102577175875681%3Fcomment_id%3D1193531464007751%26reply_comment_id%3D654912701278942&include_parent=false&width=560&appId=337055250820503&height=134" width="560" height="134" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>

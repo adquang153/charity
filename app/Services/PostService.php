@@ -41,7 +41,7 @@ class PostService{
         }
         return $post->update($data);
     }
-    public function getAllPosts($params){
+    public function getAllPosts($params=[]){
         $select = '*';
         if(isset($params['select']))
             $select = $params['select'];

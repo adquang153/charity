@@ -27,7 +27,7 @@ class CampaignService{
         return $data;
     }
 
-    public function getAllCampaigns($params){
+    public function getAllCampaigns($params=[]){
         $select = '*';
         // if params select empty then select query select *
         if(isset($params['select']))
@@ -46,8 +46,11 @@ class CampaignService{
                 $data = $data->appends(['search' => $params['search']]);
             }
         }
-        else
+        else{
             $data = $data->get();
+            if(isset($params['take']))
+                $data = $data->take($params['take']);
+        }
         return $data;
     }
 
