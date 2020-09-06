@@ -25,7 +25,7 @@ class DifficultSituationController extends Controller
         $params = [
             'paginate' => 15,
         ];
-        $data = $this->difficult->getAll();
+        $data = $this->difficult->getAll($params);
         return view('admin.difficult.index', compact('data'));
     }
 
