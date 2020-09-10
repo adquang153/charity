@@ -24,7 +24,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Controller Admin
 Route::prefix('/admin')->middleware(['auth','is_admin'])->name('admin.')->namespace('Admin')->group(function(){
     Route::get('/', 'HomeController@index')->name('index');
-
+    Route::get('/change-password', 'HomeController@changePassword')->name('change-password');
+    Route::post('/update-password', 'HomeController@updatePassword')->name('update-password');
     //user
     Route::post('/user/delete-users', 'UserController@deleteUsers')->name('user.delete-users');
     Route::resource('/user', 'UserController');
@@ -56,7 +57,8 @@ Auth::routes();
 Route::namespace('View')->name('view.')->group(function(){
     Route::get('/', 'HomeController@index')->name('index');
     Route::get('/about', 'HomeController@about')->name('about');
-
+    Route::get('/change-password', 'HomeController@changePassword')->name('change-password');
+    Route::post('/update-password', 'HomeController@updatePassword')->name('update-password');
     //campaign
     Route::get('/explore', 'CampaignController@explore')->name('explore');
     Route::get('campaign/detail/{id}', 'CampaignController@detail')->name('campaign.detail');
@@ -64,6 +66,10 @@ Route::namespace('View')->name('view.')->group(function(){
     Route::post('/campaign/store', 'CampaignController@storeCampaign')->name('campaign.store')->middleware('auth');
     Route::get('/campaign/edit/{id}', 'CampaignController@edit')->name('campaign.edit')->middleware('auth');
     Route::post('/campaign/update/{id}', 'CampaignController@update')->name('campaign.update')->middleware('auth');
+
+    //donate
+    Route::get('donate/{id}', 'DonateController@donate')->name('donate');
+    Route::post('donate/{id}', 'DonateController@store')->name('donate.store');
 
     //post
     Route::get('/articles', 'ArticleController@articles')->name('articles');

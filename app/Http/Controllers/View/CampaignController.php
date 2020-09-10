@@ -8,23 +8,27 @@ use App\Services\CampaignService;
 use App\Services\CategoryService;
 use App\Services\UserService;
 use App\Http\Requests\CampaignRequest;
+use App\Services\DifficultService;
 
 class CampaignController extends Controller
 {
     //
-    private $campaign;
-    private $category;
-    private $user;
+    protected $campaign;
+    protected $category;
+    protected $user;
+    protected $difficult;
 
-    public function __construct(CampaignService $campaign, CategoryService $category,UserService $user){
+    public function __construct(CampaignService $campaign, CategoryService $category,UserService $user, DifficultService $difficult){
         $this->campaign = $campaign;
         $this->category = $category;
         $this->user = $user;
+        $this->difficult = $difficult;
     }
 
     public function createCampaign(){
         $listCate = $this->category->getAllCategory();
-        return view('view.campaign.create', compact('listCate'));
+        $listDiff = $this->difficult->getAll();
+        return view('view.campaign.create', compact('listCate','listDiff'));
     }
 
     public function storeCampaign(CampaignRequest $request){

@@ -67,7 +67,15 @@
                                 required="" class="form-control" placeholder="Mô tả ngắn" rows="3" maxlength="255"
                                 name="description" cols="50">{{old('description')}}</textarea>
                         </div>
-
+                        <div class="form-group">
+                            <label for="">Hoàn cảnh khó khăn*</label>
+                            <select name="difficult_situation_id" class="form-control" id="" required>
+                                <option value="">-- Chọn hoàn cảnh --</option>
+                                @foreach($listDiff as $item)
+                                    <option value="{{$item->id}}" {{$item->id == old('difficult_situation_id') ? 'selected' : ''}}>{{$item->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <div class="form-group">
                             <label for="campaign-money">Số tiền mong muốn*</label>
                             <div class="input-group">

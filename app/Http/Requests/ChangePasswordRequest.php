@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CampaignRequest extends FormRequest
+class ChangePasswordRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,14 +24,8 @@ class CampaignRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255|min:10',
-            'content' => 'required',
-            'date_end' => 'required|after:'.Date('Y-m-d'),
-            'amount' => 'required|numeric',
-            'user_id' => 'required',
-            'category_id' => 'required',
-            'description' => 'required|max:500',
-            'difficult_situation_id' => 'required|numeric'
+            'password' => 'required|min:6',
+            'new_password' => 'required|min:6|confirmed'
         ];
     }
 }
