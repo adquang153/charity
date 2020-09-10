@@ -29,7 +29,7 @@ class PostRequest extends FormRequest
             'user_id' => 'required|numeric',
         ];
         if(!$this->id){
-            $rules['images'] = 'required';  
+            $rules['image'] = 'required';  
         }
         return $rules;
     }

@@ -57,8 +57,8 @@ Auth::routes();
 Route::namespace('View')->name('view.')->group(function(){
     Route::get('/', 'HomeController@index')->name('index');
     Route::get('/about', 'HomeController@about')->name('about');
-    Route::get('/change-password', 'HomeController@changePassword')->name('change-password');
-    Route::post('/update-password', 'HomeController@updatePassword')->name('update-password');
+    Route::get('/change-password', 'HomeController@changePassword')->name('change-password')->middleware('auth');
+    Route::post('/update-password', 'HomeController@updatePassword')->name('update-password')->middleware('auth');
     //campaign
     Route::get('/explore', 'CampaignController@explore')->name('explore');
     Route::get('campaign/detail/{id}', 'CampaignController@detail')->name('campaign.detail');
@@ -73,11 +73,11 @@ Route::namespace('View')->name('view.')->group(function(){
 
     //post
     Route::get('/articles', 'ArticleController@articles')->name('articles');
-    Route::get('/articles/create', 'ArticleController@create')->name('articles.create');
-    Route::post('/articles/store', 'ArticleController@store')->name('articles.store');
+    Route::get('/articles/create', 'ArticleController@create')->name('articles.create')->middleware('auth');
+    Route::post('/articles/store', 'ArticleController@store')->name('articles.store')->middleware('auth');
     Route::get('/articles/detail/{id}', 'ArticleController@detailArticles')->name('articles.detail');
-    Route::get('/articles/edit/{id}', 'ArticleController@edit')->name('articles.edit');
-    Route::post('/articles/update/{id}', 'ArticleController@update')->name('articles.update');
+    Route::get('/articles/edit/{id}', 'ArticleController@edit')->name('articles.edit')->middleware('auth');
+    Route::post('/articles/update/{id}', 'ArticleController@update')->name('articles.update')->middleware('auth');
 
     Route::get('/loginfe', 'HomeController@login')->name('loginfe');
 
