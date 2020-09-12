@@ -7,8 +7,8 @@ class Handler{
 
     public static function uploadFile($images, $directory){
         $extension = $images->extension();
-        $pathFile = 'public/storage/'. $directory . '/' . time() . '.' . $extension;
-        $file = $images->move('storage/'.$directory, $pathFile);
+        $pathFile = 'public/images/upload/'. $directory . '/' . time() . '.' . $extension;
+        $file = $images->move('images/upload/'.$directory, $pathFile);
         return str_replace('\\','/',$file);
     }
 
