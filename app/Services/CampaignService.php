@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Campaign;
 use App\Helpers\Handler;
 use Storage;
+use App\Comment;
 
 class CampaignService{
 
@@ -20,7 +21,7 @@ class CampaignService{
 
     public function findCampaign($id, $type=""){
         if($type=="admin"){
-            return Campaign::with(['user', 'difficult_situation', 'category'])->find($id);
+            return Campaign::with(['user', 'difficult_situation', 'category', 'comment'])->find($id);
         }
         // find campaign with status = 1
             $data = Campaign::with(['user', 'donate'])->withCount('donate')->where('status', Campaign::ACTIVE)->find($id);
@@ -99,6 +100,15 @@ class CampaignService{
         $campaign->video = $data['video'];
         $campaign->save();
         return $campaign;
+    }
+
+    public function addComment($id, $comment){
+        $result = Comment::create([
+            'content' => $comment,
+            'user_id' => \Auth::user()->id,
+            'campaign_id' => $id
+        ]);
+        return $result;
     }
 
 }

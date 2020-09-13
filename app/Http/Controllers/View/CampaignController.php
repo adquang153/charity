@@ -40,6 +40,7 @@ class CampaignController extends Controller
 
     public function detail($id){
         $data = $this->campaign->findCampaign($id);
+        
         if(!$data)
             return redirect()->back()->with('error','Chiến dịch không tồn tại hoặc đang chờ admin phê duyệt!');
         return view('view.campaign.detail', compact('data'));
@@ -75,6 +76,11 @@ class CampaignController extends Controller
             return redirect()->route('view.campaign.detail', $result->id)->with('success', 'Sửa chiến dịch thành công!');
         }
         return redirect()->back()->with('error', 'Sửa chiến dịch không thành công!');
+    }
+
+    public function comment(Request $request, $id){
+        $result = $this->campaign->addComment($id, $request->comment);
+        return redirect()->route('view.campaign.detail', $id);
     }
 
 }

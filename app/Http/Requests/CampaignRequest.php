@@ -31,7 +31,7 @@ class CampaignRequest extends FormRequest
             'user_id' => 'required',
             'category_id' => 'required',
             'description' => 'required|max:500',
-            'difficult_situation_id' => 'required|numeric'
+            // 'difficult_situation_id' => 'required|numeric'
         ];
     }
 }
