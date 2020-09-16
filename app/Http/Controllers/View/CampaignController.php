@@ -46,11 +46,9 @@ class CampaignController extends Controller
         return view('view.campaign.detail', compact('data'));
     }
     public function explore(Request $request){
-        $params = [ 
-            'where' => [
-                            ['status', 1],
-                            ['date_end', '>=', Date('Y-m-d')]
-                        ],
+        $params = [
+            'where' => ['status', 1],
+            'whereDate' => ['date_end', '>=', Date('Y-m-d')],
             'paginate' => 12,
             'search' => $request->search
         ];

@@ -35,13 +35,18 @@ class CampaignService{
             $select = $params['select'];
         $data = Campaign::with(['user','donate'])->select($select)->orderBy('created_at','asc');
 
-        if(isset($params['where']))
+        if(isset($params['where'])){
             $data = $data->where($params['where']);
-        if(isset($params['orderBy']) && isset($params['order']))
+        }
+        if(isset($params['whereDate'])){
+            $data = $data->whereDate($params['whereDate']);
+        }
+        if(isset($params['orderBy']) && isset($params['order'])){
             $data = $data->orderBy( $params['orderBy'], $params['order'] );
-        if(isset($params['search']) && trim($params['search']) != "")
+        }
+        if(isset($params['search']) && trim($params['search']) != ""){
             $data = $data->where('name', 'like', '%'.$params['search'].'%');
-            
+        }
         if(isset($params['paginate'])){
             $data = $data->paginate($params['paginate']);
             if( isset( $params['search']) && trim($params['search']) != "" ){
