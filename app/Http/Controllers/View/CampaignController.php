@@ -48,7 +48,7 @@ class CampaignController extends Controller
     public function explore(Request $request){
         $params = [
             'where' => ['status', 1],
-            'whereDate' => ['date_end', '>=', Date('Y-m-d')],
+            'whereDate' => ['date_end', '>=', Date('Y/m/d')],
             'paginate' => 12,
             'search' => $request->search
         ];
