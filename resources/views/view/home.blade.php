@@ -146,8 +146,8 @@
                     @endfor
                 </ol>
                 <div class="carousel-inner">
-                    @foreach($campaignsTop3 as $item)
-                    <div class="carousel-item campaign-style3 active">
+                    @foreach($campaignsTop3 as $index=>$item)
+                    <div class="carousel-item campaign-style3 {{$index == 0 ? 'active' : '' }}">
                         <div class="row">
                             <div class="col-md-7">
                                 <div class="embed-responsive embed-responsive-16by9 campaign-style1 mb-3 mb-md-0">
@@ -161,7 +161,9 @@
                                     <a href="detail.html">
                                         <h2 class="campaign-title text-dark">{{$item->name}}</h2>
                                     </a>
-                                    <div class="text-secondary my-3">{{ strip_tags($item->content) }}
+                                    <?php $content = strip_tags($item->content);
+                                        $content = strlen($content) > 400 ? substr($content, 0 , 400) . '...' : $content ; ?>
+                                    <div class="text-secondary my-3">{{ $content }}
                                     </div>
 
                                     <div class="campagin-progress">
